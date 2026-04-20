@@ -1,11 +1,18 @@
 ---
 permalink: /
-title: "About Me"
+title: "About Me / 关于我"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
+
+<div style="margin-bottom: 1.5em;">
+  <button onclick="switchLang('en')" id="btn-en" style="margin-right:8px; padding:5px 16px; cursor:pointer; border:1px solid #aaa; border-radius:4px; background:#2a7ae2; color:white; font-weight:bold;">English</button>
+  <button onclick="switchLang('zh')" id="btn-zh" style="padding:5px 16px; cursor:pointer; border:1px solid #aaa; border-radius:4px; background:#f8f8f8; color:#333;">中文</button>
+</div>
+
+<div id="content-en">
 
 I am a postdoctoral researcher at the [Shanghai Institute of Microsystem and Information Technology (SIMIT)](http://www.sim.ac.cn/), Chinese Academy of Sciences, working with Prof. Wenjie Yu. I received my Ph.D. in Microelectronics and Solid-State Electronics from SIMIT, CAS in 2025, and hold an M.Sc. in Computer Science and Artificial Intelligence from the University of Manchester (2021) and a B.Sc. from the University of Nottingham Ningbo China (2020).
 
@@ -33,9 +40,9 @@ Materials development involves a long decision chain spanning literature retriev
 
 → Full list on the [Publications](/publications/) page. &nbsp;&nbsp;[[Download CV](/files/cv.pdf)]
 
----
+</div>
 
-## 关于我
+<div id="content-zh" style="display:none;">
 
 我是中国科学院上海微系统与信息技术研究所的博士后研究员，合作导师为俞文杰研究员。2025年于上海微系统所获微电子学与固体电子学工学博士学位，2021年于曼彻斯特大学获计算机科学与人工智能理学硕士学位，2020年于宁波诺丁汉大学获理学学士学位。
 
@@ -44,3 +51,32 @@ Materials development involves a long decision chain spanning literature retriev
 **一、材料如何被机器理解。** 材料具有跨模态、跨尺度的本征属性，纯数据驱动难以触达物理本质。研究将物理机理融入表示学习，探索融合分子序列、图结构、三维构象与领域知识的多模态统一表征，并在神经网络力场等下游任务中引入物理先验，追求可解释、可泛化的材料表征。
 
 **二、材料研发如何被智能驱动。** 材料研发涉及文献检索、数据整合、多尺度模拟与工艺优化的长链路决策。研究以智能体为中枢，串联知识图谱、跨尺度模拟、预测模型与工艺优化等工具链，推动研发向自动化、智能化演进，并以集成电路材料为载体探索落地路径。
+
+## 动态
+
+- **2025.06** — 入职中科院上海微系统所，开始博士后研究（上海市超级博士后）。
+- **2025** — 论文发表于 *npj Computational Materials*：多模态多域聚合物统一表征用于性质预测。
+- **2025** — 论文发表于 *Journal of Chemical Information and Modeling*：基于结构约束的分层深度势能用于高效粗粒化建模。
+- **2024.07–2025.03** — 赴日本理化学研究所（RIKEN-AIP）访问，合作导师赵启斌研究员。
+- **2024** — 论文发表于 *ACS Applied Polymer Materials*：加权链式SMILES机器学习框架用于共聚物性质预测。
+
+## 代表性论文
+
+1. **黄琪** 等，"Unified multimodal multidomain polymer representation for property prediction"，*npj Computational Materials*，vol. 11，Art. no. 153，2025。
+2. **黄琪** 等，"Hierarchical deep potential with structure constraints for efficient coarse-grained modeling"，*Journal of Chemical Information and Modeling*，vol. 65，no. 7，pp. 3203–3214，2025。
+3. **黄琪** 等，"Enhancing copolymer property prediction through the weighted-chained-SMILES machine learning framework"，*ACS Applied Polymer Materials*，vol. 6，no. 7，pp. 3666–3675，2024。
+
+→ 完整列表见 [Publications](/publications/) 页面。&nbsp;&nbsp;[[下载简历](/files/cv.pdf)]
+
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+  document.getElementById('content-zh').style.display = lang === 'zh' ? 'block' : 'none';
+  document.getElementById('btn-en').style.background = lang === 'en' ? '#2a7ae2' : '#f8f8f8';
+  document.getElementById('btn-en').style.color = lang === 'en' ? 'white' : '#333';
+  document.getElementById('btn-zh').style.background = lang === 'zh' ? '#2a7ae2' : '#f8f8f8';
+  document.getElementById('btn-zh').style.color = lang === 'zh' ? 'white' : '#333';
+}
+</script>
