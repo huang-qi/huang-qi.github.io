@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-<div class="lang-en">
+<div class="lang-en" markdown="1">
 
 I am a postdoctoral researcher at the [Shanghai Institute of Microsystem and Information Technology (SIMIT)](http://www.sim.ac.cn/), Chinese Academy of Sciences, working with Prof. Wenjie Yu. I received my Ph.D. in Microelectronics and Solid-State Electronics from SIMIT, CAS in 2025, and hold an M.Sc. in Computer Science and Artificial Intelligence from the University of Manchester (2021) and a B.Sc. from the University of Nottingham Ningbo China (2020).
 
@@ -37,7 +37,7 @@ Materials development involves a long decision chain spanning literature retriev
 
 </div>
 
-<div class="lang-zh">
+<div class="lang-zh" markdown="1">
 
 我是中国科学院上海微系统与信息技术研究所的博士后研究员，合作导师为俞文杰研究员。2025年于上海微系统所获微电子学与固体电子学工学博士学位，2021年于曼彻斯特大学获计算机科学与人工智能理学硕士学位，2020年于宁波诺丁汉大学获理学学士学位。
 

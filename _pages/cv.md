@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-<div class="lang-en">
+<div class="lang-en" markdown="1">
 
 [[Download CV](/files/cv.pdf)]
 
@@ -48,7 +48,7 @@ redirect_from:
 
 </div>
 
-<div class="lang-zh">
+<div class="lang-zh" markdown="1">
 
 [[下载简历](/files/cv.pdf)]
 

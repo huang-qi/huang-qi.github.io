@@ -16,8 +16,8 @@
 
 <!-- Language toggle styles -->
 <style>
-  body:not(.lang-zh) .lang-zh { display: none !important; }
-  body.lang-zh .lang-en { display: none !important; }
+  html:not(.lang-zh) .lang-zh { display: none !important; }
+  html.lang-zh .lang-en { display: none !important; }
   #lang-toggle {
     cursor: pointer;
     font-size: 0.85em;
@@ -30,12 +30,12 @@
     line-height: 1.8;
   }
 </style>
-<!-- Apply saved language before render to avoid flash -->
+<!-- Apply saved language immediately to avoid flash -->
 <script>
   (function() {
     if (localStorage.getItem('site-lang') === 'zh') {
+      document.documentElement.classList.add('lang-zh');
       document.addEventListener('DOMContentLoaded', function() {
-        document.body.classList.add('lang-zh');
         var btn = document.getElementById('lang-toggle');
         if (btn) btn.textContent = 'EN';
       });
