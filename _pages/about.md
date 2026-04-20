@@ -1,18 +1,13 @@
 ---
 permalink: /
-title: "About Me / 关于我"
+title: "About Me"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-<div style="margin-bottom: 1.5em;">
-  <button onclick="switchLang('en')" id="btn-en" style="margin-right:8px; padding:5px 16px; cursor:pointer; border:1px solid #aaa; border-radius:4px; background:#2a7ae2; color:white; font-weight:bold;">English</button>
-  <button onclick="switchLang('zh')" id="btn-zh" style="padding:5px 16px; cursor:pointer; border:1px solid #aaa; border-radius:4px; background:#f8f8f8; color:#333;">中文</button>
-</div>
-
-<div id="content-en">
+<div class="lang-en">
 
 I am a postdoctoral researcher at the [Shanghai Institute of Microsystem and Information Technology (SIMIT)](http://www.sim.ac.cn/), Chinese Academy of Sciences, working with Prof. Wenjie Yu. I received my Ph.D. in Microelectronics and Solid-State Electronics from SIMIT, CAS in 2025, and hold an M.Sc. in Computer Science and Artificial Intelligence from the University of Manchester (2021) and a B.Sc. from the University of Nottingham Ningbo China (2020).
 
@@ -42,7 +37,7 @@ Materials development involves a long decision chain spanning literature retriev
 
 </div>
 
-<div id="content-zh" style="display:none;">
+<div class="lang-zh">
 
 我是中国科学院上海微系统与信息技术研究所的博士后研究员，合作导师为俞文杰研究员。2025年于上海微系统所获微电子学与固体电子学工学博士学位，2021年于曼彻斯特大学获计算机科学与人工智能理学硕士学位，2020年于宁波诺丁汉大学获理学学士学位。
 
@@ -69,14 +64,3 @@ Materials development involves a long decision chain spanning literature retriev
 → 完整列表见 [Publications](/publications/) 页面。&nbsp;&nbsp;[[下载简历](/files/cv.pdf)]
 
 </div>
-
-<script>
-function switchLang(lang) {
-  document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
-  document.getElementById('content-zh').style.display = lang === 'zh' ? 'block' : 'none';
-  document.getElementById('btn-en').style.background = lang === 'en' ? '#2a7ae2' : '#f8f8f8';
-  document.getElementById('btn-en').style.color = lang === 'en' ? 'white' : '#333';
-  document.getElementById('btn-zh').style.background = lang === 'zh' ? '#2a7ae2' : '#f8f8f8';
-  document.getElementById('btn-zh').style.color = lang === 'zh' ? 'white' : '#333';
-}
-</script>
