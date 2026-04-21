@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qi Huang | Postdoctoral Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #0a192f;
+      --navy-light:#112240;
+      --navy-mid:  #1d3a6e;
+      --slate:     #8892b0;
+      --slate-light: #a8b2d8;
+      --white:     #e6f1ff;
+      --teal:      #64ffda;
+      --teal-dim:  rgba(100,255,218,0.1);
+      --font-sans: 'Space Grotesk', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--slate);
+      font-family: var(--font-sans);
+      font-size: 17px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--navy-mid); border-radius: 3px; }
+
+    /* ── LAYOUT ── */
+    .layout {
+      display: grid;
+      grid-template-columns: 300px 1fr 260px;
+      min-height: 100vh;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* ── SIDEBAR ── */
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 80px 40px 50px;
+      overflow-y: auto;
+    }
+
+    .sidebar-top h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .sidebar-top h2 {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--slate-light);
+      margin-top: 12px;
+      line-height: 1.4;
+    }
+
+    .sidebar-top p.tagline {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--teal);
+      margin-top: 18px;
+      letter-spacing: 0.04em;
+    }
+
+    nav {
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    nav a {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--slate);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 0;
+      transition: var(--transition);
+    }
+
+    nav a::before {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 28px;
+      background: var(--slate);
+      transition: var(--transition);
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--white);
+    }
+
+    nav a:hover::before, nav a.active::before {
+      width: 52px;
+      background: var(--teal);
+    }
+
+    nav a.active {
+      color: var(--teal);
+    }
+
+    .sidebar-socials {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .sidebar-socials a {
+      color: var(--slate);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+    }
+
+    .sidebar-socials a:hover {
+      color: var(--teal);
+      transform: translateY(-3px);
+    }
+
+    .sidebar-socials svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* ── MAIN ── */
+    main {
+      padding: 80px 80px 80px 60px;
+      max-width: 720px;
+    }
+
+    section {
+      padding-bottom: 100px;
+      scroll-margin-top: 80px;
+    }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--teal);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 80px;
+      background: var(--navy-mid);
+    }
+
+    /* ── HERO ── */
+    #intro {
+      padding-top: 20px;
+    }
+
+    #intro .greeting {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--teal);
+      margin-bottom: 20px;
+    }
+
+    #intro h1 {
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    #intro h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      color: var(--slate);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+
+    #intro .intro-body {
+      max-width: 520px;
+      margin-top: 28px;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 40px;
+      padding: 16px 28px;
+      border: 1px solid var(--teal);
+      border-radius: 4px;
+      color: var(--teal);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      transition: var(--transition);
+    }
+
+    .btn:hover {
+      background: var(--teal-dim);
+      transform: translateY(-2px);
+    }
+
+    /* ── ABOUT ── */
+    #about img.profile {
+      float: right;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin: 0 0 24px 32px;
+      filter: grayscale(20%) contrast(1.05);
+      border: 2px solid var(--teal);
+      box-shadow: 6px 6px 0 var(--teal-dim);
+    }
+
+    #about p {
+      margin-bottom: 16px;
+      line-height: 1.75;
+    }
+
+    #about a {
+      color: var(--teal);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    #about a:hover {
+      text-decoration: underline;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+      clear: both;
+    }
+
+    .pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--teal);
+      background: var(--teal-dim);
+      border: 1px solid rgba(100,255,218,0.2);
+      border-radius: 3px;
+      padding: 4px 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── RESEARCH ── */
+    .research-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .research-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 6px;
+      padding: 32px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .research-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--teal);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .research-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(100,255,218,0.15);
+    }
+
+    .research-card:hover::before {
+      opacity: 1;
+    }
+
+    .research-card .num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--teal);
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+
+    .research-card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .research-card p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    /* ── EXPERIENCE / TIMELINE ── */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      cursor: default;
+      transition: var(--transition);
+    }
+
+    .timeline-item:last-child { border-bottom: none; }
+
+    .timeline-item:hover {
+      background: var(--navy-light);
+      margin: 0 -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      border-radius: 6px;
+      border-color: transparent;
+    }
+
+    .tl-date {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding-top: 4px;
+      line-height: 1.4;
+    }
+
+    .tl-content h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .tl-content h3 a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .tl-content h3 a:hover { color: var(--teal); }
+
+    .tl-content .org {
+      font-size: 0.88rem;
+      color: var(--slate-light);
+      margin-top: 4px;
+    }
+
+    .tl-content p {
+      font-size: 0.88rem;
+      margin-top: 10px;
+      line-height: 1.65;
+    }
+
+    .tl-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .tl-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--teal);
+      background: var(--teal-dim);
+      border-radius: 3px;
+      padding: 3px 10px;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .pub-item {
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 6px;
+      padding: 24px 28px;
+      transition: var(--transition);
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 0 18px;
+      align-items: start;
+    }
+
+    .pub-item--visual {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .pub-visual {
+      width: 100%;
+      background: #0d2137;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+    }
+
+    .pub-visual img {
+      width: 100%;
+      height: auto;
+      max-height: 260px;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .pub-item--visual:hover .pub-visual img {
+      transform: scale(1.03);
+    }
+
+    .pub-meta {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 0 18px;
+      align-items: start;
+      padding: 22px 28px;
+    }
+
+    .pub-item:hover {
+      transform: translateY(-3px);
+      border-color: rgba(100,255,218,0.15);
+    }
+
+    .pub-num {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--teal);
+      padding-top: 2px;
+    }
+
+    .pub-body h4 {
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .pub-body h4 a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .pub-body h4 a:hover { color: var(--teal); }
+
+    .pub-body .journal {
+      font-size: 0.82rem;
+      color: var(--slate-light);
+      font-style: italic;
+    }
+
+    .pub-body .pub-desc {
+      font-size: 0.85rem;
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+
+    .pub-body .pub-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--teal);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: var(--transition);
+    }
+
+    .pub-body .pub-link:hover { text-decoration: underline; }
+
+    /* ── CONTACT ── */
+    #contact {
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    #contact .section-label {
+      justify-content: center;
+    }
+
+    #contact .section-label::after { display: none; }
+
+    #contact h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    #contact p {
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .contact-grid {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 1px solid rgba(100,255,218,0.2);
+      border-radius: 4px;
+      color: var(--slate-light);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      transition: var(--transition);
+    }
+
+    .contact-link:hover {
+      color: var(--teal);
+      border-color: var(--teal);
+      background: var(--teal-dim);
+      transform: translateY(-2px);
+    }
+
+    .contact-link svg {
+      width: 16px; height: 16px;
+      fill: currentColor;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 20px 0 60px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--slate);
+      letter-spacing: 0.05em;
+    }
+
+    footer a {
+      color: var(--slate-light);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--teal); }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RIGHT PANEL ── */
+    .right-panel {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    #graph-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.45;
+    }
+
+    .rp-label {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .rp-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .rp-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .rp-stat .val {
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .rp-stat .desc {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--slate);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .rp-divider {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, var(--navy-mid), transparent);
+    }
+
+    .rp-tag {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--teal);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+    }
+
+    /* ── MOUSE SPOTLIGHT ── */
+    .mouse-spotlight {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      transition: opacity 0.4s ease;
+      opacity: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1200px) {
+      .right-panel { display: none; }
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
+        height: auto;
+        padding: 60px 30px 40px;
+      }
+
+      nav { display: none; }
+
+      main {
+        padding: 40px 30px 80px;
+        max-width: 100%;
+      }
+
+      #about img.profile {
+        float: none;
+        display: block;
+        margin: 0 auto 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── MOUSE SPOTLIGHT ── -->
+<div class="mouse-spotlight" id="mouse-spotlight"></div>
+
+<div class="layout">
+
+  <!-- ── SIDEBAR ── -->
+  <aside>
+    <div class="sidebar-top">
+      <h1>Qi Huang<br /><span style="font-weight:300;font-size:1.6rem;letter-spacing:0.02em;color:var(--slate-light)">黄琪</span></h1>
+      <h2>Postdoctoral Researcher<br />SIMIT, Chinese Academy of Sciences</h2>
+      <p class="tagline">AI for Science · Materials</p>
+
+      <nav id="nav">
+        <a href="#about" class="active">About</a>
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-socials">
+      <!-- GitHub -->
+      <a href="https://github.com/huang-qi" target="_blank" title="GitHub">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+        </svg>
+      </a>
+      <!-- ORCID -->
+      <a href="https://orcid.org/0009-0002-7302-329X" target="_blank" title="ORCID">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.9-2.484 3.9-3.722 0-2.016-1.284-3.722-3.853-3.722h-2.344z"/>
+        </svg>
+      </a>
+      <!-- Email -->
+      <a href="mailto:huangqi@mail.sim.ac.cn" title="Email">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+      </a>
+      <!-- CV download -->
+      <a href="https://huang-qi.github.io/files/cv.pdf" target="_blank" title="Download CV">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15h8v2H8v-2zm0-4h8v2H8v-2z"/>
+        </svg>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main>
+
+    <!-- INTRO -->
+    <section id="intro">
+      <p class="greeting">Hi, my name is</p>
+      <h1>Qi Huang.</h1>
+      <h2 style="font-size: 44.8px;">I build AI for materials science.</h2>
+      <p class="intro-body">
+        I'm a postdoctoral researcher at the <a href="http://www.sim.ac.cn/" style="color:var(--teal);text-decoration:none;" target="_blank">Shanghai Institute of Microsystem and Information Technology (SIMIT)</a>, Chinese Academy of Sciences, working at the intersection of deep learning, physics-informed modeling, and semiconductor materials.
+      </p>
+      <a class="btn" href="https://huang-qi.github.io/files/cv.pdf" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15h8v2H8v-2zm0-4h8v2H8v-2z"/></svg>
+        View Full CV
+      </a>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="fade-in">
+      <p class="section-label">About Me</p>
+
+      <img class="profile"
+           src="https://huang-qi.github.io/images/profile.jpg"
+           alt="Qi Huang"
+           onerror="this.style.display='none'" />
+
+      <p>
+        I am a postdoctoral researcher at <a href="http://www.sim.ac.cn/" target="_blank">SIMIT, CAS</a>, working with Prof. Wenjie Yu under the Shanghai Super Postdoc Program. I received my <strong style="color:var(--slate-light)">Ph.D. in Microelectronics and Solid-State Electronics</strong> from SIMIT, CAS in 2025.
+      </p>
+      <p>
+        Prior to that, I earned an <strong style="color:var(--slate-light)">M.Sc. in Computer Science and Artificial Intelligence</strong> from the University of Manchester (2021) and a <strong style="color:var(--slate-light)">B.Sc.</strong> from the University of Nottingham Ningbo China (2020).
+      </p>
+      <p>
+        From July 2024 to March 2025, I was a visiting researcher at the <a href="https://www.riken.jp/en/research/labs/aip/" target="_blank">RIKEN Center for Advanced Intelligence Project (AIP)</a>, Japan, collaborating with Dr. Qibin Zhao.
+      </p>
+      <p>Here are some technologies I work with:</p>
+
+      <div class="pill-list">
+        <span class="pill">Deep Learning</span>
+        <span class="pill">Physics-Informed ML</span>
+        <span class="pill">Graph Neural Networks</span>
+        <span class="pill">Molecular Dynamics</span>
+        <span class="pill">Python</span>
+        <span class="pill">PyTorch</span>
+        <span class="pill">Knowledge Graphs</span>
+        <span class="pill">LLM Agents</span>
+        <span class="pill">Cheminformatics</span>
+        <span class="pill">Multimodal Learning</span>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research" class="fade-in">
+      <p class="section-label">Research</p>
+
+      <div class="research-grid">
+        <div class="research-card">
+          <div class="num">01 // Materials Representation</div>
+          <h3>How can materials be understood by machines?</h3>
+          <p>
+            Materials carry intrinsic properties across modalities and scales that pure data-driven approaches struggle to capture. My work integrates physical mechanisms into representation learning — fusing molecular sequences, graph structures, 3D conformations, and domain knowledge into unified multimodal representations. Physical priors are embedded in downstream tasks such as neural network force fields, pursuing representations that are both interpretable and generalizable.
+          </p>
+        </div>
+
+        <div class="research-card">
+          <div class="num">02 // Intelligent R&amp;D Pipelines</div>
+          <h3>How can materials R&amp;D be intelligently driven?</h3>
+          <p>
+            Materials development involves a long decision chain spanning literature retrieval, data integration, multi-scale simulation, and process optimization. My work places intelligent agents at the center, orchestrating knowledge graphs, cross-scale simulation tools, predictive models, and process optimizers into an automated pipeline — with integrated circuit materials as the primary application domain.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="fade-in">
+      <p class="section-label">Experience &amp; Education</p>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="tl-date">2025 — Now</div>
+          <div class="tl-content">
+            <h3>Postdoctoral Researcher</h3>
+            <div class="org">Shanghai Institute of Microsystem and Information Technology, CAS · Shanghai, China</div>
+            <p>Working with Prof. Wenjie Yu on AI-driven materials research. Awarded the Shanghai Super Postdoc Program.</p>
+            <div class="tl-tags">
+              <span class="tl-tag">AI for Science</span>
+              <span class="tl-tag">IC Materials</span>
+              <span class="tl-tag">Intelligent Agents</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-date">Jul 2024 — Mar 2025</div>
+          <div class="tl-content">
+            <h3>Visiting Researcher</h3>
+            <div class="org">RIKEN Center for Advanced Intelligence Project (AIP) · Japan</div>
+            <p>Collaborated with Dr. Qibin Zhao on multimodal representation learning for polymer property prediction.</p>
+            <div class="tl-tags">
+              <span class="tl-tag">Multimodal Learning</span>
+              <span class="tl-tag">Large Language Model</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-date">2021 — 2025</div>
+          <div class="tl-content">
+            <h3>Ph.D. — Microelectronics &amp; Solid-State Electronics</h3>
+            <div class="org">Shanghai Institute of Microsystem and Information Technology, CAS</div>
+            <p>Doctoral research on physics-informed ML for materials science. Developed neural network force fields, coarse-grained simulation methods, and multimodal polymer representations.</p>
+            <div class="tl-tags">
+              <span class="tl-tag">Deep Potential</span>
+              <span class="tl-tag">Material Representation</span>
+              <span class="tl-tag">Polymer ML</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-date">2020 — 2021</div>
+          <div class="tl-content">
+            <h3>M.Sc. — Computer Science &amp; Artificial Intelligence</h3>
+            <div class="org">University of Manchester · Manchester, UK</div>
+            <div class="tl-tags">
+              <span class="tl-tag">Machine Learning</span>
+              <span class="tl-tag">NLP</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-date">2016 — 2020</div>
+          <div class="tl-content">
+            <h3>B.Sc. — Computer Science</h3>
+            <div class="org">University of Nottingham Ningbo China · Ningbo, China</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications" class="fade-in">
+      <p class="section-label">Publications</p>
+
+      <div class="pub-list">
+
+        <!-- J1 -->
+        <div class="pub-item pub-item--visual">
+          <div class="pub-visual">
+            <img src="images/pub_j1.webp" alt="Unified multimodal polymer representation framework" />
+          </div>
+          <div class="pub-meta">
+            <div class="pub-num">J1</div>
+            <div class="pub-body">
+              <h4><a href="https://doi.org/10.1038/s41524-025-01652-z" target="_blank">Unified multimodal multidomain polymer representation for property prediction</a></h4>
+              <div class="journal">npj Computational Materials, vol. 11, Art. no. 153, 2025</div>
+              <p class="pub-desc">A multimodal prediction framework fusing SMILES, molecular graphs, descriptors, and 3D conformations with domain knowledge text, achieving state-of-the-art performance on multiple polymer benchmark tasks.</p>
+              <a class="pub-link" href="https://doi.org/10.1038/s41524-025-01652-z" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+                DOI: 10.1038/s41524-025-01652-z
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- J2 -->
+        <div class="pub-item pub-item--visual">
+          <div class="pub-visual">
+            <img src="images/pub_j2.webp" alt="Hierarchical deep potential coarse-grained modeling" />
+          </div>
+          <div class="pub-meta">
+            <div class="pub-num">J2</div>
+            <div class="pub-body">
+              <h4><a href="https://doi.org/10.1021/acs.jcim.4c02042" target="_blank">Hierarchical deep potential with structure constraints for efficient coarse-grained modeling</a></h4>
+              <div class="journal">Journal of Chemical Information and Modeling, vol. 65, no. 7, pp. 3203–3214, 2025</div>
+              <p class="pub-desc">A coarse-grained molecular dynamics method integrating Boltzmann inversion structural priors with hierarchical neural network potentials, achieving high structural fidelity while improving computational efficiency by an order of magnitude.</p>
+              <a class="pub-link" href="https://doi.org/10.1021/acs.jcim.4c02042" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+                DOI: 10.1021/acs.jcim.4c02042
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- J3 -->
+        <div class="pub-item pub-item--visual">
+          <div class="pub-visual">
+            <img src="images/pub_j3.gif" alt="Weighted-chained-SMILES copolymer framework" />
+          </div>
+          <div class="pub-meta">
+            <div class="pub-num">J3</div>
+            <div class="pub-body">
+              <h4><a href="https://doi.org/10.1021/acsapm.3c02715" target="_blank">Enhancing copolymer property prediction through the weighted-chained-SMILES machine learning framework</a></h4>
+              <div class="journal">ACS Applied Polymer Materials, vol. 6, no. 7, pp. 3666–3675, 2024</div>
+              <p class="pub-desc">A machine learning framework based on weighted-chained-SMILES for copolymer property prediction, effectively encoding monomer sequence information and composition ratios to improve accuracy for copolymer systems.</p>
+              <a class="pub-link" href="https://doi.org/10.1021/acsapm.3c02715" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+                DOI: 10.1021/acsapm.3c02715
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- J4 -->
+        <div class="pub-item pub-item--visual">
+          <div class="pub-visual">
+            <img src="images/pub_j4.jpg" alt="Polyamine CMP silicon polishing simulation" />
+          </div>
+          <div class="pub-meta">
+            <div class="pub-num">J4</div>
+            <div class="pub-body">
+              <h4><a href="https://doi.org/10.3390/nano14010127" target="_blank">Mechanism exploration of the effect of polyamines on the polishing rate of silicon CMP</a></h4>
+              <div class="journal">Nanomaterials, vol. 14, no. 1, Art. no. 127, 2024</div>
+              <p class="pub-desc">A combined simulation and experimental study exploring how polyamine additives affect the silicon removal rate in CMP, revealing adsorption mechanisms and providing guidance for slurry formulation design.</p>
+              <a class="pub-link" href="https://doi.org/10.3390/nano14010127" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+                DOI: 10.3390/nano14010127
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-num">P1</div>
+          <div class="pub-body">
+            <h4>一种基于多源数据的聚合物统一表征向量生成方法</h4>
+            <div class="journal">Chinese Invention Patent (pending) · Application No. 202511203392, 2025</div>
+            <p class="pub-desc">First inventor. A unified polymer representation vector generation method based on multi-source data.</p>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-num">P2</div>
+          <div class="pub-body">
+            <h4>抛光材料去除率分布预测模型训练方法、预测方法、存储介质和终端</h4>
+            <div class="journal">Chinese Invention Patent (granted) · Patent No. ZL202410828607.2, 2024</div>
+            <p class="pub-desc">Second inventor. Training and prediction method for polishing material removal rate distribution prediction models.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center;margin-top:32px;">
+        <a class="btn" href="https://huang-qi.github.io/publications/" target="_blank">
+          View All Publications
+        </a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="fade-in">
+      <p class="section-label">What's Next?</p>
+      <h2>Get In Touch</h2>
+      <p>
+        I'm always open to discussing research collaborations, academic opportunities, or AI for Science projects. Feel free to reach out — I'll do my best to respond promptly.
+      </p>
+      <a class="btn" href="mailto:huangqi@mail.sim.ac.cn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Say Hello
+      </a>
+
+      <div class="contact-grid">
+        <a class="contact-link" href="https://github.com/huang-qi" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub
+        </a>
+        <a class="contact-link" href="https://orcid.org/0009-0002-7302-329X" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.9-2.484 3.9-3.722 0-2.016-1.284-3.722-3.853-3.722h-2.344z"/></svg>
+          ORCID
+        </a>
+        <a class="contact-link" href="https://huang-qi.github.io/" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          Academic Page
+        </a>
+        <a class="contact-link" href="mailto:huangqi@mail.sim.ac.cn">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          huangqi@mail.sim.ac.cn
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>Designed &amp; Built by Qi Huang &nbsp;·&nbsp; <a href="https://huang-qi.github.io/" target="_blank">huang-qi.github.io</a></p>
+    </footer>
+
+  </main>
+
+  <!-- ── RIGHT PANEL ── -->
+  <div class="right-panel" aria-hidden="true">
+    <canvas id="graph-canvas"></canvas>
+    <div class="rp-label">
+      <span class="rp-tag">AI · Materials · Science</span>
+      <div class="rp-divider"></div>
+      <div class="rp-stats">
+        <div class="rp-stat">
+          <span class="val">4</span>
+          <span class="desc">Publications</span>
+        </div>
+        <div class="rp-divider"></div>
+        <div class="rp-stat">
+          <span class="val">2</span>
+          <span class="desc">Patents</span>
+        </div>
+        <div class="rp-divider"></div>
+        <div class="rp-stat">
+          <span class="val">3+</span>
+          <span class="desc">Years Research</span>
+        </div>
+      </div>
+      <div class="rp-divider"></div>
+      <span class="rp-tag">CAS · RIKEN · Manchester</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── TWEAKS PANEL ── -->
+<div id="tweaks-panel" style="display:none;position:fixed;bottom:24px;right:24px;background:#112240;border:1px solid rgba(100,255,218,0.25);border-radius:8px;padding:20px 22px;z-index:9999;min-width:220px;font-family:'DM Mono',monospace;font-size:0.72rem;color:#a8b2d8;">
+  <div style="font-size:0.75rem;font-weight:600;color:#e6f1ff;margin-bottom:14px;letter-spacing:0.08em;">Tweaks</div>
+
+  <label style="display:block;margin-bottom:10px;">
+    <span style="display:block;margin-bottom:4px;color:#64ffda;">Accent Color</span>
+    <input type="color" id="tw-accent" value="#64ffda" style="width:100%;height:28px;border:none;background:none;cursor:pointer;" />
+  </label>
+
+  <label style="display:block;margin-bottom:10px;">
+    <span style="display:block;margin-bottom:4px;color:#64ffda;">Background</span>
+    <select id="tw-bg" style="width:100%;background:#0a192f;color:#a8b2d8;border:1px solid rgba(100,255,218,0.2);border-radius:3px;padding:4px 6px;">
+      <option value="#0a192f">Navy (default)</option>
+      <option value="#0d1117">Graphite</option>
+      <option value="#1a1a2e">Midnight</option>
+      <option value="#0f2027">Deep Ocean</option>
+    </select>
+  </label>
+
+  <label style="display:block;">
+    <span style="display:block;margin-bottom:4px;color:#64ffda;">Font Size</span>
+    <input type="range" id="tw-size" min="14" max="20" step="1" value="17" style="width:100%;" />
+    <span id="tw-size-val">17px</span>
+  </label>
+</div>
+
+<script>
+  // ── MOUSE SPOTLIGHT ──
+  (function() {
+    const spotlight = document.getElementById('mouse-spotlight');
+    let mouseX = -9999, mouseY = -9999;
+    let currentX = -9999, currentY = -9999;
+    let visible = false;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!visible) {
+        spotlight.style.opacity = '1';
+        visible = true;
+      }
+    });
+
+    document.addEventListener('mouseleave', () => {
+      spotlight.style.opacity = '0';
+      visible = false;
+    });
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function animateSpotlight() {
+      currentX = lerp(currentX, mouseX, 0.08);
+      currentY = lerp(currentY, mouseY, 0.08);
+
+      spotlight.style.background = `radial-gradient(
+        600px circle at ${currentX}px ${currentY}px,
+        rgba(100, 255, 218, 0.07) 0%,
+        rgba(100, 255, 218, 0.03) 30%,
+        transparent 70%
+      )`;
+
+      requestAnimationFrame(animateSpotlight);
+    }
+
+    animateSpotlight();
+  })();
+
+  // ── GRAPH CANVAS ──
+  (function() {
+    const canvas = document.getElementById('graph-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const teal = '100,255,218';
+    const slateLight = '168,178,216';
+
+    let W, H, nodes, edges;
+
+    function resize() {
+      const panel = canvas.parentElement;
+      W = canvas.width = panel.offsetWidth;
+      H = canvas.height = panel.offsetHeight;
+      init();
+    }
+
+    function init() {
+      const N = 28;
+      nodes = Array.from({length: N}, (_, i) => ({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: Math.random() * 2.5 + 1.2,
+        pulse: Math.random() * Math.PI * 2,
+        speed: Math.random() * 0.012 + 0.006,
+        kind: i < 6 ? 'hub' : 'node'
+      }));
+      // hubs are bigger
+      nodes.filter(n => n.kind === 'hub').forEach(n => { n.r = Math.random() * 2 + 3.5; });
+      buildEdges();
+    }
+
+    function buildEdges() {
+      edges = [];
+      const DIST = Math.min(W, H) * 0.38;
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          if (Math.sqrt(dx*dx + dy*dy) < DIST) edges.push([i, j]);
+        }
+      }
+    }
+
+    function draw(t) {
+      ctx.clearRect(0, 0, W, H);
+
+      // edges
+      edges.forEach(([i, j]) => {
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        const DIST = Math.min(W, H) * 0.38;
+        if (dist > DIST) return;
+        const alpha = (1 - dist / DIST) * 0.18;
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(${slateLight},${alpha})`;
+        ctx.lineWidth = 0.7;
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      });
+
+      // nodes
+      nodes.forEach(n => {
+        const pulse = 0.5 + 0.5 * Math.sin(n.pulse + t * n.speed * 60);
+        const glowAlpha = 0.08 + 0.07 * pulse;
+        const col = n.kind === 'hub' ? teal : slateLight;
+
+        // glow
+        const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 5);
+        g.addColorStop(0, `rgba(${col},${glowAlpha})`);
+        g.addColorStop(1, `rgba(${col},0)`);
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r * 5, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+
+        // core
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${col},${0.5 + 0.3 * pulse})`;
+        ctx.fill();
+      });
+    }
+
+    let last = 0;
+    function tick(ts) {
+      const t = ts / 1000;
+      const DIST = Math.min(W, H) * 0.38;
+
+      nodes.forEach(n => {
+        n.x += n.vx;
+        n.y += n.vy;
+        if (n.x < 0 || n.x > W) n.vx *= -1;
+        if (n.y < 0 || n.y > H) n.vy *= -1;
+        n.pulse += n.speed;
+      });
+
+      if (ts - last > 800) { buildEdges(); last = ts; }
+      draw(t);
+      requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    requestAnimationFrame(tick);
+  })();
+
+  // ── SCROLL SPY ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  // ── FADE IN ──
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  fadeEls.forEach(el => fadeObs.observe(el));
+
+  // ── TWEAKS ──
+  const tweaks = document.getElementById('tweaks-panel');
+
+  window.addEventListener('message', e => {
+    if (e.data.type === '__activate_edit_mode') tweaks.style.display = 'block';
+    if (e.data.type === '__deactivate_edit_mode') tweaks.style.display = 'none';
+  });
+
+  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+
+  document.getElementById('tw-accent').addEventListener('input', function() {
+    document.documentElement.style.setProperty('--teal', this.value);
+    document.documentElement.style.setProperty('--teal-dim', this.value + '1a');
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accentColor: this.value } }, '*');
+  });
+
+  document.getElementById('tw-bg').addEventListener('change', function() {
+    document.documentElement.style.setProperty('--navy', this.value);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { bgColor: this.value } }, '*');
+  });
+
+  const sizeInput = document.getElementById('tw-size');
+  const sizeVal = document.getElementById('tw-size-val');
+  sizeInput.addEventListener('input', function() {
+    document.body.style.fontSize = this.value + 'px';
+    sizeVal.textContent = this.value + 'px';
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { fontSize: parseInt(this.value) } }, '*');
+  });
+</script>
+
+</body>
+</html>
