@@ -1,1338 +1,555 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Qi Huang | Postdoctoral Researcher</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy:      #0a192f;
-      --navy-light:#112240;
-      --navy-mid:  #1d3a6e;
-      --slate:     #8892b0;
-      --slate-light: #a8b2d8;
-      --white:     #e6f1ff;
-      --teal:      #64ffda;
-      --teal-dim:  rgba(100,255,218,0.1);
-      --font-sans: 'Space Grotesk', sans-serif;
-      --font-mono: 'DM Mono', monospace;
-      --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--navy);
-      color: var(--slate);
-      font-family: var(--font-sans);
-      font-size: 17px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ── SCROLLBAR ── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--navy); }
-    ::-webkit-scrollbar-thumb { background: var(--navy-mid); border-radius: 3px; }
-
-    /* ── LAYOUT ── */
-    .layout {
-      display: grid;
-      grid-template-columns: 300px 1fr 260px;
-      min-height: 100vh;
-      max-width: 1600px;
-      margin: 0 auto;
-    }
-
-    /* ── SIDEBAR ── */
-    aside {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 80px 40px 50px;
-      overflow-y: auto;
-    }
-
-    .sidebar-top h1 {
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-    }
-
-    .sidebar-top h2 {
-      font-size: 1.05rem;
-      font-weight: 400;
-      color: var(--slate-light);
-      margin-top: 12px;
-      line-height: 1.4;
-    }
-
-    .sidebar-top p.tagline {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--teal);
-      margin-top: 18px;
-      letter-spacing: 0.04em;
-    }
-
-    nav {
-      margin-top: 56px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    nav a {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--slate);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 6px 0;
-      transition: var(--transition);
-    }
-
-    nav a::before {
-      content: '';
-      display: block;
-      height: 1px;
-      width: 28px;
-      background: var(--slate);
-      transition: var(--transition);
-    }
-
-    nav a:hover, nav a.active {
-      color: var(--white);
-    }
-
-    nav a:hover::before, nav a.active::before {
-      width: 52px;
-      background: var(--teal);
-    }
-
-    nav a.active {
-      color: var(--teal);
-    }
-
-    .sidebar-socials {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      margin-top: auto;
-    }
-
-    .sidebar-socials a {
-      color: var(--slate);
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-    }
-
-    .sidebar-socials a:hover {
-      color: var(--teal);
-      transform: translateY(-3px);
-    }
-
-    .sidebar-socials svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-
-    /* ── MAIN ── */
-    main {
-      padding: 80px 80px 80px 80px;
-      max-width: 900px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    section {
-      padding-bottom: 100px;
-      scroll-margin-top: 80px;
-    }
-
-    /* ── SECTION LABELS ── */
-    .section-label {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--teal);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 32px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .section-label::after {
-      content: '';
-      display: block;
-      height: 1px;
-      width: 80px;
-      background: var(--navy-mid);
-    }
-
-    /* ── HERO ── */
-    #intro {
-      padding-top: 20px;
-    }
-
-    #intro .greeting {
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      color: var(--teal);
-      margin-bottom: 20px;
-    }
-
-    #intro h1 {
-      font-size: clamp(2.8rem, 6vw, 4.8rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
-
-    #intro h2 {
-      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
-      font-weight: 500;
-      color: var(--slate);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-top: 10px;
-    }
-
-    #intro .intro-body {
-      max-width: 520px;
-      margin-top: 28px;
-      line-height: 1.7;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 40px;
-      padding: 16px 28px;
-      border: 1px solid var(--teal);
-      border-radius: 4px;
-      color: var(--teal);
-      text-decoration: none;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      transition: var(--transition);
-    }
-
-    .btn:hover {
-      background: var(--teal-dim);
-      transform: translateY(-2px);
-    }
-
-    /* ── ABOUT ── */
-    #about img.profile {
-      float: right;
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin: 0 0 24px 32px;
-      filter: grayscale(20%) contrast(1.05);
-      border: 2px solid var(--teal);
-      box-shadow: 6px 6px 0 var(--teal-dim);
-    }
-
-    #about p {
-      margin-bottom: 16px;
-      line-height: 1.75;
-    }
-
-    #about a {
-      color: var(--teal);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    #about a:hover {
-      text-decoration: underline;
-    }
-
-    .pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 20px;
-      clear: both;
-    }
-
-    .pill {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--teal);
-      background: var(--teal-dim);
-      border: 1px solid rgba(100,255,218,0.2);
-      border-radius: 3px;
-      padding: 4px 12px;
-      letter-spacing: 0.04em;
-    }
-
-    /* ── RESEARCH ── */
-    .research-grid {
-      display: grid;
-      gap: 24px;
-    }
-
-    .research-card {
-      background: var(--navy-light);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 6px;
-      padding: 32px;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .research-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px;
-      height: 100%;
-      background: var(--teal);
-      opacity: 0;
-      transition: var(--transition);
-    }
-
-    .research-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(100,255,218,0.15);
-    }
-
-    .research-card:hover::before {
-      opacity: 1;
-    }
-
-    .research-card .num {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--teal);
-      letter-spacing: 0.1em;
-      margin-bottom: 14px;
-    }
-
-    .research-card h3 {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 12px;
-      line-height: 1.3;
-    }
-
-    .research-card p {
-      font-size: 0.92rem;
-      line-height: 1.7;
-    }
-
-    /* ── EXPERIENCE / TIMELINE ── */
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 0 24px;
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      cursor: default;
-      transition: var(--transition);
-    }
-
-    .timeline-item:last-child { border-bottom: none; }
-
-    .timeline-item:hover {
-      background: var(--navy-light);
-      margin: 0 -20px;
-      padding-left: 20px;
-      padding-right: 20px;
-      border-radius: 6px;
-      border-color: transparent;
-    }
-
-    .tl-date {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--slate);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding-top: 4px;
-      line-height: 1.4;
-    }
-
-    .tl-content h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--white);
-      line-height: 1.3;
-    }
-
-    .tl-content h3 a {
-      color: inherit;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .tl-content h3 a:hover { color: var(--teal); }
-
-    .tl-content .org {
-      font-size: 0.88rem;
-      color: var(--slate-light);
-      margin-top: 4px;
-    }
-
-    .tl-content p {
-      font-size: 0.88rem;
-      margin-top: 10px;
-      line-height: 1.65;
-    }
-
-    .tl-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 14px;
-    }
-
-    .tl-tag {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--teal);
-      background: var(--teal-dim);
-      border-radius: 3px;
-      padding: 3px 10px;
-    }
-
-    /* ── PUBLICATIONS ── */
-    .pub-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .pub-item {
-      background: var(--navy-light);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 6px;
-      padding: 24px 28px;
-      transition: var(--transition);
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 0 18px;
-      align-items: start;
-    }
-
-    .pub-item--visual {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .pub-visual {
-      width: 100%;
-      background: #0d2137;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px 24px;
-    }
-
-    .pub-visual img {
-      width: 100%;
-      height: auto;
-      max-height: 260px;
-      object-fit: contain;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .pub-item--visual:hover .pub-visual img {
-      transform: scale(1.03);
-    }
-
-    .pub-meta {
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 0 18px;
-      align-items: start;
-      padding: 22px 28px;
-    }
-
-    .pub-item:hover {
-      transform: translateY(-3px);
-      border-color: rgba(100,255,218,0.15);
-    }
-
-    .pub-num {
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--teal);
-      padding-top: 2px;
-    }
-
-    .pub-body h4 {
-      font-size: 0.97rem;
-      font-weight: 600;
-      color: var(--white);
-      line-height: 1.4;
-      margin-bottom: 6px;
-    }
-
-    .pub-body h4 a {
-      color: inherit;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .pub-body h4 a:hover { color: var(--teal); }
-
-    .pub-body .journal {
-      font-size: 0.82rem;
-      color: var(--slate-light);
-      font-style: italic;
-    }
-
-    .pub-body .pub-desc {
-      font-size: 0.85rem;
-      margin-top: 8px;
-      line-height: 1.6;
-    }
-
-    .pub-body .pub-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 10px;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--teal);
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      transition: var(--transition);
-    }
-
-    .pub-body .pub-link:hover { text-decoration: underline; }
-
-    /* ── CONTACT ── */
-    #contact {
-      text-align: center;
-      padding-top: 20px;
-    }
-
-    #contact .section-label {
-      justify-content: center;
-    }
-
-    #contact .section-label::after { display: none; }
-
-    #contact h2 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-    }
-
-    #contact p {
-      max-width: 480px;
-      margin: 0 auto 40px;
-      line-height: 1.7;
-    }
-
-    .contact-grid {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border: 1px solid rgba(100,255,218,0.2);
-      border-radius: 4px;
-      color: var(--slate-light);
-      text-decoration: none;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      transition: var(--transition);
-    }
-
-    .contact-link:hover {
-      color: var(--teal);
-      border-color: var(--teal);
-      background: var(--teal-dim);
-      transform: translateY(-2px);
-    }
-
-    .contact-link svg {
-      width: 16px; height: 16px;
-      fill: currentColor;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 20px 0 60px;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--slate);
-      letter-spacing: 0.05em;
-    }
-
-    footer a {
-      color: var(--slate-light);
-      text-decoration: none;
-    }
-
-    footer a:hover { color: var(--teal); }
-
-    /* ── ANIMATIONS ── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── RIGHT PANEL ── */
-    .right-panel {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    #graph-canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.45;
-    }
-
-    .rp-label {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 32px;
-    }
-
-    .rp-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .rp-stat {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .rp-stat .val {
-      font-family: var(--font-mono);
-      font-size: 2rem;
-      font-weight: 500;
-      color: var(--white);
-      letter-spacing: -0.02em;
-      line-height: 1;
-    }
-
-    .rp-stat .desc {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      color: var(--slate);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .rp-divider {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, transparent, var(--navy-mid), transparent);
-    }
-
-    .rp-tag {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: var(--teal);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      opacity: 0.7;
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      transform: rotate(180deg);
-    }
-
-    /* ── MOUSE SPOTLIGHT ── */
-    .mouse-spotlight {
-      pointer-events: none;
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      transition: opacity 0.4s ease;
-      opacity: 0;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1200px) {
-      .right-panel { display: none; }
-    }
-
-    @media (max-width: 900px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-
-      aside {
-        position: static;
-        height: auto;
-        padding: 60px 30px 40px;
-      }
-
-      nav { display: none; }
-
-      main {
-        padding: 40px 30px 80px;
-        max-width: 100%;
-      }
-
-      #about img.profile {
-        float: none;
-        display: block;
-        margin: 0 auto 24px;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Qi Huang 黄琪 | Postdoctoral Researcher</title>
+<meta name="description" content="Qi Huang (黄琪), postdoctoral researcher at SIMIT, Chinese Academy of Sciences. AI for Science · Materials.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,300;1,400;1,500&family=IBM+Plex+Mono:wght@400&family=Manrope:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400&family=Noto+Serif+SC:wght@300;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A1628; --navy2:#0F2038; --ivory:#F6F2EA; --ivory2:#EDE7DA; --gold:#D9B46A;
+    --latin:'Cormorant Garamond','Noto Serif SC',Georgia,serif;
+    --serif:'Noto Serif SC','Songti SC',serif;
+    --sans:'Manrope','Noto Sans SC','PingFang SC',system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+    --ease:cubic-bezier(.16,1,.3,1);
+    box-sizing:border-box;
+  }
+  /* 两套配色：象牙白 与 深海军蓝，章节交替 */
+  .light{--bg:var(--ivory);--bg2:var(--ivory2);--ink:#14213A;--muted:#566177;--accent:#8C6A2A;--line:rgba(20,33,58,.14);--card:#FFFFFF}
+  .dark{--bg:var(--navy);--bg2:var(--navy2);--ink:#F1ECE0;--muted:#A3AEC2;--accent:var(--gold);--line:rgba(217,180,106,.22);--card:rgba(255,255,255,.04)}
+  *,*::before,*::after{box-sizing:inherit}
+  html{background:var(--navy);scroll-behavior:smooth;scroll-padding-top:76px}
+  body{margin:0;font-family:var(--sans);font-weight:400;font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;background:var(--ivory);color:#14213A}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .wrap{width:min(1160px,100% - 48px);margin-inline:auto}
+  .mono{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .skip{position:absolute;left:-999px;top:8px;background:var(--gold);color:var(--navy);padding:8px 14px;z-index:99}
+  .skip:focus{left:8px}
+  section.s{background:var(--bg);color:var(--ink);padding:clamp(80px,10vw,136px) 0}
+  section.alt{background:var(--bg2)}
+
+  /* 导航 */
+  .nav{position:sticky;top:0;z-index:30;background:rgba(10,22,40,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);color:var(--ink)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;height:64px}
+  .brand{font-family:var(--latin);font-style:italic;font-size:26px;text-decoration:none;letter-spacing:.01em}
+  .links{display:flex;align-items:center;gap:clamp(14px,2.4vw,30px);font-size:14px}
+  .links a{text-decoration:none;color:var(--muted);padding:6px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+  .links a:hover{color:var(--ink)}
+  .links a.on{color:var(--ink);border-color:var(--accent)}
+  .links .cvb{border:1px solid var(--accent);color:var(--accent);padding:6px 16px;border-radius:99px;transition:background .2s,color .2s}
+  .links .cvb:hover{background:var(--accent);color:var(--navy)}
+  @media (max-width:760px){.nav .wrap{height:auto;flex-wrap:wrap;padding:10px 0 4px}.links{order:3;width:100%;overflow-x:auto;white-space:nowrap;padding-bottom:6px}}
+
+  /* 首屏 */
+  .hero{position:relative;overflow:hidden;min-height:min(94svh,860px);display:flex;align-items:center;background:radial-gradient(1000px 700px at 76% 46%,#16305A 0%,var(--navy) 62%)}
+  #field{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--navy) 14%,rgba(10,22,40,.6) 46%,transparent 78%)}
+  .hero-in{position:relative;z-index:2;padding:80px 0}
+  .eyebrow{color:var(--accent);margin:0 0 24px}
+  h1{margin:0;font-family:var(--latin);font-style:italic;font-weight:400;font-size:clamp(68px,11vw,164px);line-height:.95;letter-spacing:-.015em}
+  h1 .zh{font-family:var(--serif);font-style:normal;font-weight:300;font-size:.56em;margin-left:.2em;color:var(--accent);letter-spacing:.06em}
+  .rule{width:72px;height:1px;background:var(--accent);margin:30px 0 24px}
+  .tag{font-family:var(--latin);font-weight:500;font-size:clamp(26px,3.2vw,40px);line-height:1.3;margin:0 0 14px}
+  .sub{max-width:35em;margin:0;color:var(--muted)}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .btn{display:inline-flex;align-items:center;gap:8px;font:500 14px var(--sans);text-decoration:none;border:1px solid rgba(241,236,224,.32);padding:12px 22px;border-radius:99px;transition:border-color .2s,color .2s,background .2s}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--navy);font-weight:600}
+  .btn.primary:hover{color:var(--navy);filter:brightness(1.07)}
+  .hint{margin:32px 0 0;color:var(--muted);font-size:11px}
+  @media (max-width:760px){.hero::before{background:linear-gradient(180deg,var(--navy) 34%,rgba(10,22,40,.55) 100%)}.hint{display:none}}
+
+  /* 通用 */
+  .sh{margin:0 0 clamp(36px,5vw,64px);display:flex;align-items:center;gap:20px}
+  .sh .mono{color:var(--accent)}
+  .sh::after{content:"";flex:1;height:1px;background:var(--line)}
+  h2{margin:0;font-family:var(--latin);font-weight:500;font-size:clamp(42px,5.4vw,76px);line-height:1.05;letter-spacing:-.005em;order:0}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font:400 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);padding:4px 11px;border-radius:99px;color:var(--muted)}
+
+  /* About */
+  .about{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(30px,5vw,88px);align-items:start}
+  .photo{position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,#16305A,#0A1628);display:grid;place-items:center;box-shadow:0 24px 60px -30px rgba(10,22,40,.5)}
+  .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .photo .ph{font-family:var(--serif);font-weight:300;font-size:clamp(64px,9vw,120px);color:var(--gold);letter-spacing:.04em}
+  .photo:not(.noimg) .ph{display:none}
+  .photo.noimg img{display:none}
+  .about p{margin:0 0 1.1em}
+  .about strong{font-weight:600}
+  .about a{text-decoration:none;border-bottom:1px solid var(--accent)}
+  .about .lead{font-family:var(--latin);font-weight:500;font-size:clamp(26px,3vw,38px);line-height:1.35;margin-bottom:1em}
+  .stack{margin-top:30px}
+  .stack .mono{color:var(--muted);margin-bottom:10px;display:block;font-size:11px}
+  @media (max-width:820px){.about{grid-template-columns:1fr}.photo{max-width:340px}}
+
+  /* Research：示意图 */
+  .rs{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(24px,5vw,80px);align-items:start;margin:0 0 clamp(28px,4vw,44px)}
+  .rs .mono{color:var(--accent)}
+  .rs h3{margin:10px 0 0;font-family:var(--latin);font-weight:500;font-size:clamp(30px,3.6vw,48px);line-height:1.15}
+  .rs p{margin:0;color:var(--muted)}
+  .rs.second{margin-top:clamp(80px,10vw,140px)}
+  @media (max-width:820px){.rs{grid-template-columns:1fr}}
+
+  .dg{position:relative;display:grid;gap:clamp(46px,7vw,110px);padding:clamp(22px,3vw,40px);border:1px solid var(--line);border-radius:20px;background:
+      radial-gradient(rgba(217,180,106,.13) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01))}
+  .dg.d1{grid-template-columns:minmax(0,1.08fr) minmax(0,.9fr) minmax(0,1.05fr)}
+  .dg.d2{display:flex;flex-direction:column;gap:clamp(54px,6.5vw,92px)}
+  .dg-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+  .dg-lines .ln{fill:none;stroke:rgba(217,180,106,.32);stroke-width:1.4;transition:opacity .3s,stroke .3s}
+  .dg-lines .dt{fill:rgba(217,180,106,.5);transition:opacity .3s,fill .3s}
+  .dg.hl .dg-lines .ln,.dg.hl .dg-lines .dt{opacity:.15}
+  .dg.hl .dg-lines .ln.on{opacity:1;stroke:var(--gold);stroke-dasharray:6 6;animation:flow 1s linear infinite}
+  .dg.hl .dg-lines .dt.on{opacity:1;fill:var(--gold)}
+  @keyframes flow{to{stroke-dashoffset:-12}}
+  .col{position:relative;z-index:1;display:flex;flex-direction:column;gap:16px;justify-content:center}
+  .row3{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+  .rowS{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) minmax(120px,.62fr);gap:22px}
+  .rowA{position:relative;z-index:1;display:flex;justify-content:center}
+  .rowA .cd{width:min(100%,560px)}
+
+  .cd{position:relative;z-index:1;display:flex;align-items:center;gap:15px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);transition:border-color .3s,opacity .3s,transform .5s var(--ease),background .3s;outline:none;cursor:default}
+  .cd .bd{flex:none;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:var(--accent);background:rgba(217,180,106,.07)}
+  .ic{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;display:block}
+  .cd b{display:block;font-weight:600;font-size:15.5px;line-height:1.35}
+  .cd small{display:block;font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.45}
+  .cd small.mn{font-family:var(--mono);font-size:11px;letter-spacing:.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px}
+  .cd .no{font:400 11px var(--mono);letter-spacing:.14em;color:var(--accent);display:block;margin-bottom:2px}
+  .cd:hover,.cd:focus-visible{border-color:var(--accent);transform:translateY(-2px);background:rgba(217,180,106,.08)}
+  .dg.hl .cd{opacity:.3}
+  .dg.hl .cd.on{opacity:1;border-color:var(--accent)}
+  .cd.core{flex-direction:column;text-align:center;padding:26px 20px 22px;border-color:rgba(217,180,106,.5);background:radial-gradient(circle at 50% 38%,rgba(217,180,106,.14),transparent 62%),var(--card)}
+  .cd.core .sph{width:min(100%,176px);height:auto;fill:none;stroke:var(--gold);stroke-width:1.1}
+  .cd.core b{font-size:17px;margin-top:8px}
+  .cd.agent{justify-content:center;padding:20px 26px;border-color:rgba(217,180,106,.5);background:radial-gradient(circle at 20% 50%,rgba(217,180,106,.14),transparent 55%),var(--card)}
+  .cd.agent .bd{width:62px;height:62px}
+  .cd.agent .ic{width:36px;height:36px}
+  .cd.agent b{font-size:18px}
+  .cd.tag{flex-direction:column;text-align:center;justify-content:center;gap:8px;border-style:dashed}
+  .cd.tag .bd{width:48px;height:48px}
+  .dg-info{display:flex;align-items:center;gap:16px;margin:18px 0 0;padding:14px 20px;border-left:2px solid var(--accent);background:rgba(255,255,255,.04);color:var(--ink);font-size:15px;min-height:62px;border-radius:0 10px 10px 0}
+  .dg-info .ii{flex:none;width:30px;height:30px;color:var(--accent)}
+  .dg-info .ii .ic{width:30px;height:30px}
+  @media (max-width:900px){
+    .dg-lines{display:none}
+    .dg.d1{grid-template-columns:1fr;gap:22px}
+    .row3,.rowS{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .col{gap:14px}
+    .cd small.mn{max-width:100%}
+  }
+  @media (max-width:520px){.row3,.rowS{grid-template-columns:1fr}}
+
+  /* Experience */
+  .tl{list-style:none;margin:0;padding:0}
+  .tl li{display:grid;grid-template-columns:minmax(130px,200px) minmax(0,1fr);gap:clamp(18px,4vw,64px);padding:32px 0;border-top:1px solid var(--line)}
+  .tl li:last-child{border-bottom:1px solid var(--line)}
+  .tl .when{font:400 13px var(--mono);letter-spacing:.06em;color:var(--muted);padding-top:8px}
+  .tl .now .when{color:var(--accent)}
+  .tl .now .when::after{content:"Now";margin-left:10px;border:1px solid var(--accent);border-radius:99px;padding:1px 9px;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+  .tl h3{margin:0 0 4px;font-family:var(--latin);font-weight:600;font-size:clamp(24px,2.5vw,32px);line-height:1.25}
+  .tl .org{color:var(--muted);margin:0 0 10px;font-size:15px}
+  .tl .desc{margin:0;max-width:44em}
+  @media (max-width:640px){.tl li{grid-template-columns:1fr;gap:6px}}
+
+  /* Publications */
+  .pub{display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(18px,3vw,44px);padding:34px 0;border-top:1px solid var(--line)}
+  .pub:last-of-type{border-bottom:1px solid var(--line)}
+  .thumb{position:relative;aspect-ratio:4/3;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,#16305A,#0A1628);display:grid;place-items:center}
+  .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .thumb .ph{font-family:var(--latin);font-style:italic;font-size:46px;color:var(--gold)}
+  .thumb:not(.noimg) .ph{display:none}
+  .thumb.noimg img{display:none}
+  .pid{display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;border:1px dashed var(--line);border-radius:4px;font-family:var(--latin);font-style:italic;font-size:46px;color:var(--accent)}
+  .meta{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--accent);font-size:11px;margin-bottom:8px}
+  .pub h3{margin:0 0 8px;font-family:var(--latin);font-weight:600;font-size:clamp(22px,2.3vw,29px);line-height:1.3}
+  .pub h3 a{text-decoration:none;background:linear-gradient(var(--accent),var(--accent)) 0 100%/0 1px no-repeat;transition:background-size .4s var(--ease)}
+  .pub h3 a:hover{background-size:100% 1px}
+  .pub .venue{color:var(--muted);font-size:14.5px;margin:0 0 10px}
+  .pub .abs{margin:0;font-size:15.5px;max-width:46em}
+  .hi{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:500;border-left:2px solid var(--accent);padding-left:10px}
+  .pub .doi{display:inline-block;margin-top:12px;margin-left:16px;font:400 11px var(--mono);letter-spacing:.1em;color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor}
+  .allp{display:inline-block;margin-top:30px;font:400 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px}
+  @media (max-width:700px){.pub{grid-template-columns:1fr}.thumb,.pid{max-width:320px}}
+
+  /* Contact / Footer */
+  .contact h2{font-size:clamp(52px,9vw,128px);line-height:1;margin-bottom:26px;font-weight:400}
+  .contact h2 em{font-style:italic;color:var(--accent)}
+  .contact p{max-width:36em;color:var(--muted);margin:0}
+  .lk{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:34px;font-size:15px}
+  .lk a{text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px}
+  .lk a:hover{color:var(--accent)}
+  footer{background:var(--navy);color:var(--muted);padding:30px 0 calc(34px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);font-size:13.5px}
+  footer a{color:inherit}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.dg.hl .dg-lines .ln.on{animation:none}.cd{transition:none}}
+</style>
 </head>
 <body>
+<a class="skip" href="#about">Skip to content</a>
 
-<!-- ── MOUSE SPOTLIGHT ── -->
-<div class="mouse-spotlight" id="mouse-spotlight"></div>
+<!-- 图标库：每个图标对应一个具体的科学概念 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-smiles" viewBox="0 0 48 48"><path d="M13 10H7v28h6M35 10h6v28h-6"/><text x="24" y="28" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="currentColor" stroke="none">CC(=O)</text></symbol>
+  <symbol id="i-graph" viewBox="0 0 48 48"><path d="M24 8L35 14.5V27.5L24 34L13 27.5V14.5Z"/><circle cx="24" cy="21" r="6.5" stroke-dasharray="2 2.4"/><path d="M35 27.5L42 32M13 14.5L7 11"/><g fill="currentColor" stroke="none"><circle cx="24" cy="8" r="2.4"/><circle cx="35" cy="14.5" r="2.4"/><circle cx="35" cy="27.5" r="2.4"/><circle cx="24" cy="34" r="2.4"/><circle cx="13" cy="27.5" r="2.4"/><circle cx="13" cy="14.5" r="2.4"/><circle cx="42" cy="32" r="2.4"/><circle cx="7" cy="11" r="2.4"/></g></symbol>
+  <symbol id="i-3d" viewBox="0 0 48 48"><path d="M24 5L41 15V33L24 43L7 33V15Z"/><path d="M24 24V43M24 24L7 15M24 24L41 15"/><g fill="currentColor" stroke="none"><circle cx="24" cy="24" r="4"/><circle cx="7" cy="15" r="2.6"/><circle cx="41" cy="15" r="2.6"/><circle cx="24" cy="43" r="2.6"/><circle cx="24" cy="5" r="2.2"/></g></symbol>
+  <symbol id="i-book" viewBox="0 0 48 48"><path d="M24 14C18 11 11 11 6 13V37C11 35 18 35 24 38C30 35 37 35 42 37V13C37 11 30 11 24 14ZM24 14V38"/><path d="M11 19C14 18.4 17 18.6 20 19.8M11 25C14 24.4 17 24.6 20 25.8M28 19.8C31 18.6 34 18.4 37 19M28 25.8C31 24.6 34 24.4 37 25"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 48 48"><path d="M7 41H42M7 41V7"/><rect x="12" y="27" width="6.5" height="14"/><rect x="22" y="19" width="6.5" height="22"/><rect x="32" y="11" width="6.5" height="30"/><path d="M13 20L24 12L34 6" stroke-dasharray="2 3"/></symbol>
+  <symbol id="i-force" viewBox="0 0 48 48"><circle cx="9" cy="33" r="5"/><circle cx="39" cy="33" r="5"/><path d="M14 33l3.5-5.5L21.5 38.5l4-11 4 11L33 33.5"/><path d="M9 23V8M5 12l4-4 4 4M39 23V8M35 12l4-4 4 4"/></symbol>
+  <symbol id="i-atom" viewBox="0 0 48 48"><ellipse cx="24" cy="24" rx="19" ry="7.5"/><ellipse cx="24" cy="24" rx="19" ry="7.5" transform="rotate(60 24 24)"/><ellipse cx="24" cy="24" rx="19" ry="7.5" transform="rotate(120 24 24)"/><circle cx="24" cy="24" r="3" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-kg" viewBox="0 0 48 48"><path d="M24 24L10 11M24 24L38 11M24 24L9 37M24 24L39 37M10 11L24 5L38 11M9 37L39 37"/><g fill="currentColor" stroke="none"><circle cx="24" cy="24" r="4.4"/><circle cx="10" cy="11" r="2.8"/><circle cx="38" cy="11" r="2.8"/><circle cx="24" cy="5" r="2.6"/><circle cx="9" cy="37" r="2.8"/><circle cx="39" cy="37" r="2.8"/></g></symbol>
+  <symbol id="i-sim" viewBox="0 0 48 48"><path d="M5 15C11 4 17 4 24 15S37 26 43 15"/><path d="M12 32H36M12 42H36M12 32V42M24 32V42M36 32V42"/><g fill="currentColor" stroke="none"><circle cx="12" cy="32" r="2.4"/><circle cx="24" cy="32" r="2.4"/><circle cx="36" cy="32" r="2.4"/><circle cx="12" cy="42" r="2.4"/><circle cx="24" cy="42" r="2.4"/><circle cx="36" cy="42" r="2.4"/></g></symbol>
+  <symbol id="i-net" viewBox="0 0 48 48"><path d="M9 12L24 14M9 12L24 24M9 12L24 34M9 24L24 14M9 24L24 24M9 24L24 34M9 36L24 14M9 36L24 24M9 36L24 34M24 14L39 19M24 14L39 29M24 24L39 19M24 24L39 29M24 34L39 19M24 34L39 29" stroke-width="1"/><g fill="var(--bg2)"><circle cx="9" cy="12" r="3.4"/><circle cx="9" cy="24" r="3.4"/><circle cx="9" cy="36" r="3.4"/><circle cx="24" cy="14" r="3.4"/><circle cx="24" cy="24" r="3.4"/><circle cx="24" cy="34" r="3.4"/><circle cx="39" cy="19" r="3.4"/><circle cx="39" cy="29" r="3.4"/></g></symbol>
+  <symbol id="i-opt" viewBox="0 0 48 48"><path d="M6 41H43M6 41V6"/><path d="M8 11C14 38 21 39 25 39S36 34 42 15"/><path d="M25 39V41" /><circle cx="25" cy="39" r="3" fill="currentColor" stroke="none"/><path d="M25 39V28M21 31l4-4 4 4" stroke-dasharray="2 3"/></symbol>
+  <symbol id="i-agent" viewBox="0 0 48 48"><circle cx="24" cy="24" r="6.5"/><circle cx="24" cy="24" r="2" fill="currentColor" stroke="none"/><path d="M29.7 27.3L36 31M18.3 27.3L12 31M24 17.5V9M29.7 20.7L36 17M18.3 20.7L12 17"/><g fill="currentColor" stroke="none"><circle cx="39" cy="33" r="3"/><circle cx="9" cy="33" r="3"/><circle cx="24" cy="6.5" r="3"/><circle cx="39" cy="15" r="3"/><circle cx="9" cy="15" r="3"/><circle cx="24" cy="42" r="3"/></g><path d="M24 30.5V39" /></symbol>
+  <symbol id="i-doc" viewBox="0 0 48 48"><path d="M11 5H29L38 14V43H11ZM29 5V14H38"/><path d="M16 22H33M16 28H33M16 34H26"/></symbol>
+  <symbol id="i-db" viewBox="0 0 48 48"><ellipse cx="24" cy="11" rx="15" ry="5.5"/><path d="M9 11V37C9 40 15 43 24 43S39 40 39 37V11"/><path d="M9 24C9 27 15 30 24 30S39 27 39 24"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 48 48"><rect x="5" y="5" width="38" height="38" rx="7"/><circle cx="24" cy="24" r="12"/><circle cx="24" cy="24" r="3.4" fill="currentColor" stroke="none"/><path d="M24 24L33 15" stroke-dasharray="2 2.4"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 48 48"><path d="M7 12H41M7 24H41M7 36H41"/><g fill="var(--bg2)"><circle cx="17" cy="12" r="4"/><circle cx="32" cy="24" r="4"/><circle cx="13" cy="36" r="4"/></g></symbol>
+  <symbol id="i-chip" viewBox="0 0 48 48"><rect x="12" y="12" width="24" height="24" rx="3"/><rect x="19" y="19" width="10" height="10" rx="1.5"/><path d="M19 5V12M29 5V12M19 36V43M29 36V43M5 19H12M5 29H12M36 19H43M36 29H43"/></symbol>
+</defs></svg>
 
-<div class="layout">
-
-  <!-- ── SIDEBAR ── -->
-  <aside>
-    <div class="sidebar-top">
-      <h1>Qi Huang<br /><span style="font-weight:300;font-size:1.6rem;letter-spacing:0.02em;color:var(--slate-light)">黄琪</span></h1>
-      <h2>Postdoctoral Researcher<br />SIMIT, Chinese Academy of Sciences</h2>
-      <p class="tagline">AI for Science · Materials</p>
-
-      <nav id="nav">
-        <a href="#about" class="active">About</a>
-        <a href="#research">Research</a>
-        <a href="#experience">Experience</a>
-        <a href="#publications">Publications</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-
-    <div class="sidebar-socials">
-      <!-- GitHub -->
-      <a href="https://github.com/huang-qi" target="_blank" title="GitHub">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-        </svg>
-      </a>
-      <!-- ORCID -->
-      <a href="https://orcid.org/0009-0002-7302-329X" target="_blank" title="ORCID">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.9-2.484 3.9-3.722 0-2.016-1.284-3.722-3.853-3.722h-2.344z"/>
-        </svg>
-      </a>
-      <!-- Email -->
-      <a href="mailto:huangqi@mail.sim.ac.cn" title="Email">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-        </svg>
-      </a>
-      <!-- CV download -->
-      <a href="https://huang-qi.github.io/files/cv.pdf" target="_blank" title="Download CV">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15h8v2H8v-2zm0-4h8v2H8v-2z"/>
-        </svg>
-      </a>
-    </div>
-  </aside>
-
-  <!-- ── MAIN ── -->
-  <main>
-
-    <!-- INTRO -->
-    <section id="intro">
-      <p class="greeting">Hi, my name is</p>
-      <h1>Qi Huang.</h1>
-      <h2 style="font-size: 44.8px;">I build AI for materials science.</h2>
-      <p class="intro-body">
-        I'm a postdoctoral researcher at the <a href="http://www.sim.ac.cn/" style="color:var(--teal);text-decoration:none;" target="_blank">Shanghai Institute of Microsystem and Information Technology (SIMIT)</a>, Chinese Academy of Sciences, working at the intersection of deep learning, physics-informed modeling, and semiconductor materials.
-      </p>
-      <a class="btn" href="https://huang-qi.github.io/files/cv.pdf" target="_blank">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15h8v2H8v-2zm0-4h8v2H8v-2z"/></svg>
-        View Full CV
-      </a>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="fade-in">
-      <p class="section-label">About Me</p>
-
-      <img class="profile"
-           src="/images/profile-2026.png"
-           alt="Qi Huang"
-           onerror="this.style.display='none'" />
-
-      <p>
-        I am a postdoctoral researcher at <a href="http://www.sim.ac.cn/" target="_blank">SIMIT, CAS</a>, working with Prof. Wenjie Yu under the Shanghai Super Postdoc Program. I received my <strong style="color:var(--slate-light)">Ph.D. in Microelectronics and Solid-State Electronics</strong> from SIMIT, CAS in 2025.
-      </p>
-      <p>
-        Prior to that, I earned an <strong style="color:var(--slate-light)">M.Sc. in Computer Science and Artificial Intelligence</strong> from the University of Manchester (2021) and a <strong style="color:var(--slate-light)">B.Sc.</strong> from the University of Nottingham Ningbo China (2020).
-      </p>
-      <p>
-        From July 2024 to March 2025, I was a visiting researcher at the <a href="https://www.riken.jp/en/research/labs/aip/" target="_blank">RIKEN Center for Advanced Intelligence Project (AIP)</a>, Japan, collaborating with Dr. Qibin Zhao.
-      </p>
-      <p>Here are some technologies I work with:</p>
-
-      <div class="pill-list">
-        <span class="pill">Deep Learning</span>
-        <span class="pill">Physics-Informed ML</span>
-        <span class="pill">Graph Neural Networks</span>
-        <span class="pill">Molecular Dynamics</span>
-        <span class="pill">Python</span>
-        <span class="pill">PyTorch</span>
-        <span class="pill">Knowledge Graphs</span>
-        <span class="pill">LLM Agents</span>
-        <span class="pill">Cheminformatics</span>
-        <span class="pill">Multimodal Learning</span>
-      </div>
-    </section>
-
-    <!-- RESEARCH -->
-    <section id="research" class="fade-in">
-      <p class="section-label">Research</p>
-
-      <div class="research-grid">
-        <div class="research-card">
-          <div class="num">01 // Materials Representation</div>
-          <h3>How can materials be understood by machines?</h3>
-          <p>
-            Materials carry intrinsic properties across modalities and scales that pure data-driven approaches struggle to capture. My work integrates physical mechanisms into representation learning — fusing molecular sequences, graph structures, 3D conformations, and domain knowledge into unified multimodal representations. Physical priors are embedded in downstream tasks such as neural network force fields, pursuing representations that are both interpretable and generalizable.
-          </p>
-        </div>
-
-        <div class="research-card">
-          <div class="num">02 // Intelligent R&amp;D Pipelines</div>
-          <h3>How can materials R&amp;D be intelligently driven?</h3>
-          <p>
-            Materials development involves a long decision chain spanning literature retrieval, data integration, multi-scale simulation, and process optimization. My work places intelligent agents at the center, orchestrating knowledge graphs, cross-scale simulation tools, predictive models, and process optimizers into an automated pipeline — with integrated circuit materials as the primary application domain.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="fade-in">
-      <p class="section-label">Experience &amp; Education</p>
-
-      <div class="timeline">
-
-        <div class="timeline-item">
-          <div class="tl-date">2025 — Now</div>
-          <div class="tl-content">
-            <h3>Postdoctoral Researcher</h3>
-            <div class="org">Shanghai Institute of Microsystem and Information Technology, CAS · Shanghai, China</div>
-            <p>Working with Prof. Wenjie Yu on AI-driven materials research. Awarded the Shanghai Super Postdoc Program.</p>
-            <div class="tl-tags">
-              <span class="tl-tag">AI for Science</span>
-              <span class="tl-tag">IC Materials</span>
-              <span class="tl-tag">Intelligent Agents</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="tl-date">Jul 2024 — Mar 2025</div>
-          <div class="tl-content">
-            <h3>Visiting Researcher</h3>
-            <div class="org">RIKEN Center for Advanced Intelligence Project (AIP) · Japan</div>
-            <p>Collaborated with Dr. Qibin Zhao on multimodal representation learning for polymer property prediction.</p>
-            <div class="tl-tags">
-              <span class="tl-tag">Multimodal Learning</span>
-              <span class="tl-tag">Large Language Model</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="tl-date">2021 — 2025</div>
-          <div class="tl-content">
-            <h3>Ph.D. — Microelectronics &amp; Solid-State Electronics</h3>
-            <div class="org">Shanghai Institute of Microsystem and Information Technology, CAS</div>
-            <p>Doctoral research on physics-informed ML for materials science. Developed neural network force fields, coarse-grained simulation methods, and multimodal polymer representations.</p>
-            <div class="tl-tags">
-              <span class="tl-tag">Deep Potential</span>
-              <span class="tl-tag">Material Representation</span>
-              <span class="tl-tag">Polymer ML</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="tl-date">2020 — 2021</div>
-          <div class="tl-content">
-            <h3>M.Sc. — Computer Science &amp; Artificial Intelligence</h3>
-            <div class="org">University of Manchester · Manchester, UK</div>
-            <div class="tl-tags">
-              <span class="tl-tag">Machine Learning</span>
-              <span class="tl-tag">NLP</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="tl-date">2016 — 2020</div>
-          <div class="tl-content">
-            <h3>B.Sc. — Computer Science</h3>
-            <div class="org">University of Nottingham Ningbo China · Ningbo, China</div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- PUBLICATIONS -->
-    <section id="publications" class="fade-in">
-      <p class="section-label">Publications</p>
-
-      <div class="pub-list">
-
-        <!-- J1 -->
-        <div class="pub-item pub-item--visual">
-          <div class="pub-visual">
-            <img src="images/pub_j1.webp" alt="Unified multimodal polymer representation framework" />
-          </div>
-          <div class="pub-meta">
-            <div class="pub-num">J1</div>
-            <div class="pub-body">
-              <h4><a href="https://doi.org/10.1038/s41524-025-01652-z" target="_blank">Unified multimodal multidomain polymer representation for property prediction</a></h4>
-              <div class="journal">npj Computational Materials, vol. 11, Art. no. 153, 2025</div>
-              <p class="pub-desc">A multimodal prediction framework fusing SMILES, molecular graphs, descriptors, and 3D conformations with domain knowledge text, achieving state-of-the-art performance on multiple polymer benchmark tasks.</p>
-              <a class="pub-link" href="https://doi.org/10.1038/s41524-025-01652-z" target="_blank">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-                DOI: 10.1038/s41524-025-01652-z
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- J2 -->
-        <div class="pub-item pub-item--visual">
-          <div class="pub-visual">
-            <img src="images/pub_j2.webp" alt="Hierarchical deep potential coarse-grained modeling" />
-          </div>
-          <div class="pub-meta">
-            <div class="pub-num">J2</div>
-            <div class="pub-body">
-              <h4><a href="https://doi.org/10.1021/acs.jcim.4c02042" target="_blank">Hierarchical deep potential with structure constraints for efficient coarse-grained modeling</a></h4>
-              <div class="journal">Journal of Chemical Information and Modeling, vol. 65, no. 7, pp. 3203–3214, 2025</div>
-              <p class="pub-desc">A coarse-grained molecular dynamics method integrating Boltzmann inversion structural priors with hierarchical neural network potentials, achieving high structural fidelity while improving computational efficiency by an order of magnitude.</p>
-              <a class="pub-link" href="https://doi.org/10.1021/acs.jcim.4c02042" target="_blank">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-                DOI: 10.1021/acs.jcim.4c02042
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- J3 -->
-        <div class="pub-item pub-item--visual">
-          <div class="pub-visual">
-            <img src="images/pub_j3.gif" alt="Weighted-chained-SMILES copolymer framework" />
-          </div>
-          <div class="pub-meta">
-            <div class="pub-num">J3</div>
-            <div class="pub-body">
-              <h4><a href="https://doi.org/10.1021/acsapm.3c02715" target="_blank">Enhancing copolymer property prediction through the weighted-chained-SMILES machine learning framework</a></h4>
-              <div class="journal">ACS Applied Polymer Materials, vol. 6, no. 7, pp. 3666–3675, 2024</div>
-              <p class="pub-desc">A machine learning framework based on weighted-chained-SMILES for copolymer property prediction, effectively encoding monomer sequence information and composition ratios to improve accuracy for copolymer systems.</p>
-              <a class="pub-link" href="https://doi.org/10.1021/acsapm.3c02715" target="_blank">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-                DOI: 10.1021/acsapm.3c02715
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- J4 -->
-        <div class="pub-item pub-item--visual">
-          <div class="pub-visual">
-            <img src="images/pub_j4.jpg" alt="Polyamine CMP silicon polishing simulation" />
-          </div>
-          <div class="pub-meta">
-            <div class="pub-num">J4</div>
-            <div class="pub-body">
-              <h4><a href="https://doi.org/10.3390/nano14010127" target="_blank">Mechanism exploration of the effect of polyamines on the polishing rate of silicon CMP</a></h4>
-              <div class="journal">Nanomaterials, vol. 14, no. 1, Art. no. 127, 2024</div>
-              <p class="pub-desc">A combined simulation and experimental study exploring how polyamine additives affect the silicon removal rate in CMP, revealing adsorption mechanisms and providing guidance for slurry formulation design.</p>
-              <a class="pub-link" href="https://doi.org/10.3390/nano14010127" target="_blank">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-                DOI: 10.3390/nano14010127
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-item">
-          <div class="pub-num">P1</div>
-          <div class="pub-body">
-            <h4>一种基于多源数据的聚合物统一表征向量生成方法</h4>
-            <div class="journal">Chinese Invention Patent (pending) · Application No. 202511203392, 2025</div>
-            <p class="pub-desc">First inventor. A unified polymer representation vector generation method based on multi-source data.</p>
-          </div>
-        </div>
-
-        <div class="pub-item">
-          <div class="pub-num">P2</div>
-          <div class="pub-body">
-            <h4>抛光材料去除率分布预测模型训练方法、预测方法、存储介质和终端</h4>
-            <div class="journal">Chinese Invention Patent (granted) · Patent No. ZL202410828607.2, 2024</div>
-            <p class="pub-desc">Second inventor. Training and prediction method for polishing material removal rate distribution prediction models.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div style="text-align:center;margin-top:32px;">
-        <a class="btn" href="https://huang-qi.github.io/publications/" target="_blank">
-          View All Publications
-        </a>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="fade-in">
-      <p class="section-label">What's Next?</p>
-      <h2>Get In Touch</h2>
-      <p>
-        I'm always open to discussing research collaborations, academic opportunities, or AI for Science projects. Feel free to reach out — I'll do my best to respond promptly.
-      </p>
-      <a class="btn" href="mailto:huangqi@mail.sim.ac.cn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        Say Hello
-      </a>
-
-      <div class="contact-grid">
-        <a class="contact-link" href="https://github.com/huang-qi" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-          GitHub
-        </a>
-        <a class="contact-link" href="https://orcid.org/0009-0002-7302-329X" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.9-2.484 3.9-3.722 0-2.016-1.284-3.722-3.853-3.722h-2.344z"/></svg>
-          ORCID
-        </a>
-        <a class="contact-link" href="https://huang-qi.github.io/" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-          Academic Page
-        </a>
-        <a class="contact-link" href="mailto:huangqi@mail.sim.ac.cn">
-          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          huangqi@mail.sim.ac.cn
-        </a>
-      </div>
-    </section>
-
-    <footer>
-      <p>Designed &amp; Built by Qi Huang &nbsp;·&nbsp; <a href="https://huang-qi.github.io/" target="_blank">huang-qi.github.io</a></p>
-    </footer>
-
-  </main>
-
-  <!-- ── RIGHT PANEL ── -->
-  <div class="right-panel" aria-hidden="true">
-    <canvas id="graph-canvas"></canvas>
+<header class="nav dark" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Q. Huang</a>
+    <nav class="links" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+      <a class="cvb" href="https://huang-qi.github.io/files/cv.pdf" target="_blank" rel="noopener">CV</a>
+    </nav>
   </div>
+</header>
 
-</div>
+<main>
+<section class="hero dark" id="top">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="wrap hero-in" style="color:var(--ink)">
+    <p class="eyebrow mono">Postdoctoral Researcher · SIMIT, Chinese Academy of Sciences</p>
+    <h1>Qi Huang<span class="zh">黄琪</span></h1>
+    <div class="rule"></div>
+    <p class="tag">I build AI for materials science.</p>
+    <p class="sub">I'm a postdoctoral researcher at the Shanghai Institute of Microsystem and Information Technology (SIMIT), Chinese Academy of Sciences, working at the intersection of deep learning, physics-informed modeling, and semiconductor materials.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://huang-qi.github.io/files/cv.pdf" target="_blank" rel="noopener">View Full CV</a>
+      <a class="btn" href="mailto:huangqi@mail.sim.ac.cn">Email</a>
+      <a class="btn" href="https://github.com/huang-qi" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://orcid.org/0009-0002-7302-329X" target="_blank" rel="noopener">ORCID</a>
+    </div>
+    <p class="hint mono">Move the pointer to perturb the lattice</p>
+  </div>
+</section>
 
-<!-- ── TWEAKS PANEL ── -->
-<div id="tweaks-panel" style="display:none;position:fixed;bottom:24px;right:24px;background:#112240;border:1px solid rgba(100,255,218,0.25);border-radius:8px;padding:20px 22px;z-index:9999;min-width:220px;font-family:'DM Mono',monospace;font-size:0.72rem;color:#a8b2d8;">
-  <div style="font-size:0.75rem;font-weight:600;color:#e6f1ff;margin-bottom:14px;letter-spacing:0.08em;">Tweaks</div>
+<section class="s light" id="about">
+  <div class="wrap">
+    <div class="sh"><span class="mono">01</span><h2>About</h2></div>
+    <div class="about">
+      <div class="photo" id="photo"><img src="images/profile-2026.png" alt="Qi Huang" width="800" height="1000"><span class="ph" aria-hidden="true">黄琪</span></div>
+      <div>
+        <p class="lead">Working with Prof. Wenjie Yu under the Shanghai Super Postdoc Program, on AI-driven materials research.</p>
+        <p>I am a postdoctoral researcher at <a href="http://www.sim.ac.cn/" target="_blank" rel="noopener">SIMIT, CAS</a>. I received my <strong>Ph.D. in Microelectronics and Solid-State Electronics</strong> from SIMIT, CAS in 2025.</p>
+        <p>Prior to that, I earned an <strong>M.Sc. in Computer Science and Artificial Intelligence</strong> from the University of Manchester (2021) and a <strong>B.Sc.</strong> from the University of Nottingham Ningbo China (2020).</p>
+        <p>From July 2024 to March 2025, I was a visiting researcher at the <a href="https://www.riken.jp/en/research/labs/aip/" target="_blank" rel="noopener">RIKEN Center for Advanced Intelligence Project (AIP)</a>, Japan, collaborating with Dr. Qibin Zhao.</p>
+        <div class="stack"><span class="mono">Technologies I work with</span>
+          <div class="chips" style="margin-top:0"><span class="chip">Deep Learning</span><span class="chip">Physics-Informed ML</span><span class="chip">Graph Neural Networks</span><span class="chip">Molecular Dynamics</span><span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">Knowledge Graphs</span><span class="chip">LLM Agents</span><span class="chip">Cheminformatics</span><span class="chip">Multimodal Learning</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <label style="display:block;margin-bottom:10px;">
-    <span style="display:block;margin-bottom:4px;color:#64ffda;">Accent Color</span>
-    <input type="color" id="tw-accent" value="#64ffda" style="width:100%;height:28px;border:none;background:none;cursor:pointer;" />
-  </label>
+<section class="s dark" id="research">
+  <div class="wrap">
+    <div class="sh"><span class="mono">02</span><h2>Research</h2></div>
 
-  <label style="display:block;margin-bottom:10px;">
-    <span style="display:block;margin-bottom:4px;color:#64ffda;">Background</span>
-    <select id="tw-bg" style="width:100%;background:#0a192f;color:#a8b2d8;border:1px solid rgba(100,255,218,0.2);border-radius:3px;padding:4px 6px;">
-      <option value="#0a192f">Navy (default)</option>
-      <option value="#0d1117">Graphite</option>
-      <option value="#1a1a2e">Midnight</option>
-      <option value="#0f2027">Deep Ocean</option>
-    </select>
-  </label>
+    <div class="rs">
+      <div><span class="mono">01 // Materials Representation</span><h3>How can materials be understood by machines?</h3></div>
+      <p>Materials carry intrinsic properties across modalities and scales that pure data-driven approaches struggle to capture. My work integrates physical mechanisms into representation learning — fusing molecular sequences, graph structures, 3D conformations, and domain knowledge into unified multimodal representations. Physical priors are embedded in downstream tasks such as neural network force fields, pursuing representations that are both interpretable and generalizable.</p>
+    </div>
+    <div class="dg d1" id="dg1">
+      <svg class="dg-lines" aria-hidden="true"></svg>
+      <div class="col">
+        <div class="cd" tabindex="0" data-id="smiles" data-g="smiles" data-d="SMILES — a text encoding of a molecule's structure. One of four views of the same material.">
+          <span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-smiles"/></svg></span><span><b>SMILES sequence</b><small class="mn">CC(=O)OC1=CC=CC=C1C(=O)O</small></span></div>
+        <div class="cd" tabindex="0" data-id="graph" data-g="graph" data-d="Molecular graph — atoms as nodes, bonds as edges, so the model sees topology.">
+          <span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-graph"/></svg></span><span><b>Molecular graph</b><small>atoms · bonds · topology</small></span></div>
+        <div class="cd" tabindex="0" data-id="conf" data-g="conf" data-d="3D conformation — where the atoms actually sit in space.">
+          <span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-3d"/></svg></span><span><b>3D conformation</b><small>geometry · coordinates</small></span></div>
+        <div class="cd" tabindex="0" data-id="know" data-g="know" data-d="Domain knowledge — expert knowledge written as text, fused with the structural views.">
+          <span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg></span><span><b>Domain knowledge</b><small>text · literature · rules</small></span></div>
+      </div>
+      <div class="col">
+        <div class="cd core" tabindex="0" data-id="core" data-g="smiles graph conf know prior" data-d="The four views are fused into one multimodal representation, with physical mechanisms built in.">
+          <svg class="sph" viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="70"/><ellipse cx="80" cy="80" rx="70" ry="22"/><ellipse cx="80" cy="50" rx="52" ry="15"/><ellipse cx="80" cy="110" rx="52" ry="15"/><ellipse cx="80" cy="80" rx="24" ry="70"/><ellipse cx="80" cy="80" rx="48" ry="70"/><path d="M80 10V150"/><g fill="#D9B46A" stroke="none"><circle cx="46" cy="58" r="3.2"/><circle cx="112" cy="46" r="3.2"/><circle cx="100" cy="106" r="3.2"/><circle cx="58" cy="112" r="3.2"/><circle cx="80" cy="28" r="2.6"/><circle cx="124" cy="82" r="2.6"/><circle cx="34" cy="88" r="2.6"/><circle cx="80" cy="80" r="4.6"/></g></svg>
+          <b>Unified multimodal representation</b><small>one representation per material</small></div>
+        <div class="cd" tabindex="0" data-id="prior" data-g="prior" data-d="Physical priors — physical mechanisms embedded into the representation and its downstream tasks.">
+          <span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-atom"/></svg></span><span><b>Physical priors</b><small>mechanisms built into the model</small></span></div>
+      </div>
+      <div class="col">
+        <div class="cd" tabindex="0" data-id="pred" data-g="smiles graph conf know" data-d="Property prediction — for example, polymer property benchmark tasks.">
+          <span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg></span><span><b>Property prediction</b><small>polymer benchmark tasks</small></span></div>
+        <div class="cd" tabindex="0" data-id="ff" data-g="smiles graph conf know prior" data-d="Neural network force fields — physical priors are embedded in downstream tasks like this one.">
+          <span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-force"/></svg></span><span><b>Neural network force fields</b><small>energies · forces</small></span></div>
+      </div>
+    </div>
+    <p class="dg-info" aria-live="polite"><span class="ii"></span><span class="it">Hover or focus any block to trace how it flows through the framework.</span></p>
 
-  <label style="display:block;">
-    <span style="display:block;margin-bottom:4px;color:#64ffda;">Font Size</span>
-    <input type="range" id="tw-size" min="14" max="20" step="1" value="17" style="width:100%;" />
-    <span id="tw-size-val">17px</span>
-  </label>
-</div>
+    <div class="rs second">
+      <div><span class="mono">02 // Intelligent R&amp;D Pipelines</span><h3>How can materials R&amp;D be intelligently driven?</h3></div>
+      <p>Materials development involves a long decision chain spanning literature retrieval, data integration, multi-scale simulation, and process optimization. My work places intelligent agents at the center, orchestrating knowledge graphs, cross-scale simulation tools, predictive models, and process optimizers into an automated pipeline — with integrated circuit materials as the primary application domain.</p>
+    </div>
+    <div class="dg d2" id="dg2">
+      <svg class="dg-lines" aria-hidden="true"></svg>
+      <div class="row3">
+        <div class="cd" tabindex="0" data-id="kg" data-g="t1" data-d="Knowledge graphs — structured knowledge the agent retrieves and reasons over."><span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-kg"/></svg></span><span><b>Knowledge graphs</b><small>structured domain knowledge</small></span></div>
+        <div class="cd" tabindex="0" data-id="simt" data-g="t2" data-d="Cross-scale simulation tools — simulations spanning length scales, called by the agent."><span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-sim"/></svg></span><span><b>Cross-scale simulation</b><small>across length scales</small></span></div>
+        <div class="cd" tabindex="0" data-id="mod" data-g="t3" data-d="Predictive models — property predictors the agent calls on."><span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-net"/></svg></span><span><b>Predictive models</b><small>learned property predictors</small></span></div>
+        <div class="cd" tabindex="0" data-id="opt" data-g="t4" data-d="Process optimizers — tune process parameters toward better outcomes."><span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-opt"/></svg></span><span><b>Process optimizers</b><small>search for better recipes</small></span></div>
+      </div>
+      <div class="rowA">
+        <div class="cd agent" tabindex="0" data-id="agent" data-g="t1 t2 t3 t4 s1 s2 s3 s4" data-d="Intelligent agents sit at the center, orchestrating the tools into an automated pipeline."><span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-agent"/></svg></span><span><b>Intelligent agent</b><small>orchestrates the automated pipeline</small></span></div>
+      </div>
+      <div class="rowS">
+        <div class="cd" tabindex="0" data-id="lit" data-g="s1" data-d="Literature retrieval — the first link in the materials R&amp;D decision chain."><span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-doc"/></svg></span><span><span class="no">01</span><b>Literature retrieval</b></span></div>
+        <div class="cd" tabindex="0" data-id="dat" data-g="s2" data-d="Data integration — bringing scattered data into one place the pipeline can use."><span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-db"/></svg></span><span><span class="no">02</span><b>Data integration</b></span></div>
+        <div class="cd" tabindex="0" data-id="msim" data-g="s3" data-d="Multi-scale simulation — simulation across scales, from atoms upward."><span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-scale"/></svg></span><span><span class="no">03</span><b>Multi-scale simulation</b></span></div>
+        <div class="cd" tabindex="0" data-id="popt" data-g="s4" data-d="Process optimization — the last link in the chain, closing the loop toward a better process."><span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg></span><span><span class="no">04</span><b>Process optimization</b></span></div>
+        <div class="cd tag" tabindex="0" data-id="ic" data-g="s4 tag" data-d="Integrated circuit materials are the primary application domain."><span class="bd"><svg class="ic" aria-hidden="true"><use href="#i-chip"/></svg></span><span><b>IC materials</b><small>primary application</small></span></div>
+      </div>
+    </div>
+    <p class="dg-info" aria-live="polite"><span class="ii"></span><span class="it">Hover or focus a tool or a stage to see how the agent connects to it.</span></p>
+  </div>
+</section>
+
+<section class="s light" id="experience">
+  <div class="wrap">
+    <div class="sh"><span class="mono">03</span><h2>Experience &amp; Education</h2></div>
+    <ol class="tl">
+      <li class="now"><div class="when">2025 — Now</div><div><h3>Postdoctoral Researcher</h3><p class="org">Shanghai Institute of Microsystem and Information Technology, CAS · Shanghai, China</p><p class="desc">Working with Prof. Wenjie Yu on AI-driven materials research. Awarded the Shanghai Super Postdoc Program.</p><div class="chips"><span class="chip">AI for Science</span><span class="chip">IC Materials</span><span class="chip">Intelligent Agents</span></div></div></li>
+      <li><div class="when">Jul 2024 — Mar 2025</div><div><h3>Visiting Researcher</h3><p class="org">RIKEN Center for Advanced Intelligence Project (AIP) · Japan</p><p class="desc">Collaborated with Dr. Qibin Zhao on multimodal representation learning for polymer property prediction.</p><div class="chips"><span class="chip">Multimodal Learning</span><span class="chip">Large Language Model</span></div></div></li>
+      <li><div class="when">2021 — 2025</div><div><h3>Ph.D. — Microelectronics &amp; Solid-State Electronics</h3><p class="org">Shanghai Institute of Microsystem and Information Technology, CAS</p><p class="desc">Doctoral research on physics-informed ML for materials science. Developed neural network force fields, coarse-grained simulation methods, and multimodal polymer representations.</p><div class="chips"><span class="chip">Deep Potential</span><span class="chip">Material Representation</span><span class="chip">Polymer ML</span></div></div></li>
+      <li><div class="when">2020 — 2021</div><div><h3>M.Sc. — Computer Science &amp; Artificial Intelligence</h3><p class="org">University of Manchester · Manchester, UK</p><div class="chips"><span class="chip">Machine Learning</span><span class="chip">NLP</span></div></div></li>
+      <li><div class="when">2016 — 2020</div><div><h3>B.Sc. — Computer Science</h3><p class="org">University of Nottingham Ningbo China · Ningbo, China</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="s light alt" id="publications">
+  <div class="wrap">
+    <div class="sh"><span class="mono">04</span><h2>Publications</h2></div>
+
+    <article class="pub">
+      <div class="thumb"><img src="images/pub_j1.webp" alt="Unified multimodal polymer representation framework" loading="lazy"><span class="ph" aria-hidden="true">J1</span></div>
+      <div><div class="meta mono"><span>Journal article</span><span>2025</span></div>
+        <h3><a href="https://doi.org/10.1038/s41524-025-01652-z" target="_blank" rel="noopener">Unified multimodal multidomain polymer representation for property prediction</a></h3>
+        <p class="venue">npj Computational Materials, vol. 11, Art. no. 153, 2025</p>
+        <p class="abs">A multimodal prediction framework fusing SMILES, molecular graphs, descriptors, and 3D conformations with domain knowledge text, achieving state-of-the-art performance on multiple polymer benchmark tasks.</p>
+        <span class="hi">State-of-the-art on multiple polymer benchmarks</span><a class="doi" href="https://doi.org/10.1038/s41524-025-01652-z" target="_blank" rel="noopener">DOI ↗</a></div>
+    </article>
+    <article class="pub">
+      <div class="thumb"><img src="images/pub_j2.webp" alt="Hierarchical deep potential coarse-grained modeling" loading="lazy"><span class="ph" aria-hidden="true">J2</span></div>
+      <div><div class="meta mono"><span>Journal article</span><span>2025</span></div>
+        <h3><a href="https://doi.org/10.1021/acs.jcim.4c02042" target="_blank" rel="noopener">Hierarchical deep potential with structure constraints for efficient coarse-grained modeling</a></h3>
+        <p class="venue">Journal of Chemical Information and Modeling, vol. 65, no. 7, pp. 3203–3214, 2025</p>
+        <p class="abs">A coarse-grained molecular dynamics method integrating Boltzmann inversion structural priors with hierarchical neural network potentials, achieving high structural fidelity while improving computational efficiency by an order of magnitude.</p>
+        <span class="hi">Order-of-magnitude efficiency gain, high structural fidelity</span><a class="doi" href="https://doi.org/10.1021/acs.jcim.4c02042" target="_blank" rel="noopener">DOI ↗</a></div>
+    </article>
+    <article class="pub">
+      <div class="thumb"><img src="images/pub_j3.gif" alt="Weighted-chained-SMILES copolymer framework" loading="lazy"><span class="ph" aria-hidden="true">J3</span></div>
+      <div><div class="meta mono"><span>Journal article</span><span>2024</span></div>
+        <h3><a href="https://doi.org/10.1021/acsapm.3c02715" target="_blank" rel="noopener">Enhancing copolymer property prediction through the weighted-chained-SMILES machine learning framework</a></h3>
+        <p class="venue">ACS Applied Polymer Materials, vol. 6, no. 7, pp. 3666–3675, 2024</p>
+        <p class="abs">A machine learning framework based on weighted-chained-SMILES for copolymer property prediction, effectively encoding monomer sequence information and composition ratios to improve accuracy for copolymer systems.</p>
+        <span class="hi">Encodes monomer sequence and composition ratio</span><a class="doi" href="https://doi.org/10.1021/acsapm.3c02715" target="_blank" rel="noopener">DOI ↗</a></div>
+    </article>
+    <article class="pub">
+      <div class="thumb"><img src="images/pub_j4.jpg" alt="Polyamine CMP silicon polishing simulation" loading="lazy"><span class="ph" aria-hidden="true">J4</span></div>
+      <div><div class="meta mono"><span>Journal article</span><span>2024</span></div>
+        <h3><a href="https://doi.org/10.3390/nano14010127" target="_blank" rel="noopener">Mechanism exploration of the effect of polyamines on the polishing rate of silicon CMP</a></h3>
+        <p class="venue">Nanomaterials, vol. 14, no. 1, Art. no. 127, 2024</p>
+        <p class="abs">A combined simulation and experimental study exploring how polyamine additives affect the silicon removal rate in CMP, revealing adsorption mechanisms and providing guidance for slurry formulation design.</p>
+        <span class="hi">Adsorption mechanisms that guide slurry design</span><a class="doi" href="https://doi.org/10.3390/nano14010127" target="_blank" rel="noopener">DOI ↗</a></div>
+    </article>
+    <article class="pub">
+      <div class="pid">P1</div>
+      <div><div class="meta mono"><span>Patent · pending</span><span>2025</span></div>
+        <h3>一种基于多源数据的聚合物统一表征向量生成方法</h3>
+        <p class="venue">Chinese Invention Patent (pending) · Application No. 202511203392, 2025</p>
+        <p class="abs">First inventor. A unified polymer representation vector generation method based on multi-source data.</p></div>
+    </article>
+    <article class="pub">
+      <div class="pid">P2</div>
+      <div><div class="meta mono"><span>Patent · granted</span><span>2024</span></div>
+        <h3>抛光材料去除率分布预测模型训练方法、预测方法、存储介质和终端</h3>
+        <p class="venue">Chinese Invention Patent (granted) · Patent No. ZL202410828607.2, 2024</p>
+        <p class="abs">Second inventor. Training and prediction method for polishing material removal rate distribution prediction models.</p></div>
+    </article>
+    <a class="allp" href="https://huang-qi.github.io/publications/" target="_blank" rel="noopener">View all publications ↗</a>
+  </div>
+</section>
+
+<section class="s dark contact" id="contact">
+  <div class="wrap">
+    <div class="sh"><span class="mono">05</span><span class="mono" style="color:var(--muted)">What's next?</span></div>
+    <h2>Get in <em>touch.</em></h2>
+    <p>I'm always open to discussing research collaborations, academic opportunities, or AI for Science projects. Feel free to reach out — I'll do my best to respond promptly.</p>
+    <div class="lk">
+      <a href="mailto:huangqi@mail.sim.ac.cn">huangqi@mail.sim.ac.cn</a>
+      <a href="https://github.com/huang-qi" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://orcid.org/0009-0002-7302-329X" target="_blank" rel="noopener">ORCID</a>
+      <a href="https://huang-qi.github.io/" target="_blank" rel="noopener">Academic page</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="dark"><div class="wrap">Designed &amp; Built by Qi Huang · <a href="https://huang-qi.github.io/" target="_blank" rel="noopener">huang-qi.github.io</a></div></footer>
 
 <script>
-  // ── MOUSE SPOTLIGHT ──
-  (function() {
-    const spotlight = document.getElementById('mouse-spotlight');
-    let mouseX = -9999, mouseY = -9999;
-    let currentX = -9999, currentY = -9999;
-    let visible = false;
+(function(){
+'use strict';
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function $$(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));}
+function clamp(x,a,b){return x<a?a:x>b?b:x;}
 
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (!visible) {
-        spotlight.style.opacity = '1';
-        visible = true;
-      }
+/* 图片加载失败时显示占位（不会出现破图） */
+$$('.photo,.thumb').forEach(function(box){
+  var img=box.querySelector('img');if(!img)return;
+  function bad(){box.classList.add('noimg');}
+  img.addEventListener('error',bad);
+  if(img.complete&&img.naturalWidth===0)bad();
+});
+
+/* Research 示意图：悬停 / 聚焦 → 高亮这一条通路，并解释它 */
+var NS='http://www.w3.org/2000/svg';
+function setupDG(id,defs){
+  var dg=document.getElementById(id),svg=dg.querySelector('.dg-lines'),cards=$$('.cd',dg),info=dg.nextElementSibling;
+  var it=info.querySelector('.it'),ii=info.querySelector('.ii'),def=it.textContent;
+  function el(sel){return dg.querySelector('[data-id="'+sel+'"]');}
+  function pts(a,b,R,o){
+    var A=a.getBoundingClientRect(),B=b.getBoundingClientRect(),m,sx,sy,dx,dy;
+    o=o||{};
+    if(B.left>=A.right-8){m='h';sx=A.right;dx=B.left;
+      sy=o.si?A.top+A.height*(o.si[0]+1)/(o.si[1]+1):A.top+A.height/2;
+      dy=o.di?B.top+B.height*(o.di[0]+1)/(o.di[1]+1):B.top+B.height/2;}
+    else if(B.top>=A.bottom-8){m='v';sy=A.bottom;dy=B.top;
+      if(A.width>B.width){dx=B.left+B.width/2;sx=clamp(dx,A.left+34,A.right-34);}
+      else{sx=A.left+A.width/2;dx=clamp(sx,B.left+34,B.right-34);}}
+    else if(A.top>=B.bottom-8){m='v';sy=A.top;dy=B.bottom;sx=A.left+A.width/2;dx=clamp(sx,B.left+34,B.right-34);}
+    else return null;
+    return {m:m,sx:sx-R.left,sy:sy-R.top,dx:dx-R.left,dy:dy-R.top};
+  }
+  function draw(){
+    if(!svg.getClientRects().length)return;
+    var R=dg.getBoundingClientRect();
+    svg.setAttribute('viewBox','0 0 '+R.width+' '+R.height);
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    defs.forEach(function(d){
+      var a=el(d[0]),b=el(d[1]);if(!a||!b)return;
+      var p=pts(a,b,R,d[3]);if(!p)return;
+      var k=p.m==='h'?(p.dx-p.sx)*0.5:(p.dy-p.sy)*0.5,path=document.createElementNS(NS,'path');
+      path.setAttribute('class','ln');path.setAttribute('data-g',d[2]);
+      path.setAttribute('d',p.m==='h'?'M'+p.sx+','+p.sy+' C'+(p.sx+k)+','+p.sy+' '+(p.dx-k)+','+p.dy+' '+p.dx+','+p.dy:'M'+p.sx+','+p.sy+' C'+p.sx+','+(p.sy+k)+' '+p.dx+','+(p.dy-k)+' '+p.dx+','+p.dy);
+      svg.appendChild(path);
+      var c=document.createElementNS(NS,'circle');c.setAttribute('class','dt');c.setAttribute('data-g',d[2]);c.setAttribute('cx',p.dx);c.setAttribute('cy',p.dy);c.setAttribute('r',3);svg.appendChild(c);
     });
-
-    document.addEventListener('mouseleave', () => {
-      spotlight.style.opacity = '0';
-      visible = false;
-    });
-
-    function lerp(a, b, t) { return a + (b - a) * t; }
-
-    function animateSpotlight() {
-      currentX = lerp(currentX, mouseX, 0.08);
-      currentY = lerp(currentY, mouseY, 0.08);
-
-      spotlight.style.background = `radial-gradient(
-        600px circle at ${currentX}px ${currentY}px,
-        rgba(100, 255, 218, 0.07) 0%,
-        rgba(100, 255, 218, 0.03) 30%,
-        transparent 70%
-      )`;
-
-      requestAnimationFrame(animateSpotlight);
-    }
-
-    animateSpotlight();
-  })();
-
-  // ── GRAPH CANVAS ──
-  (function() {
-    const canvas = document.getElementById('graph-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const teal = '100,255,218';
-    const slateLight = '168,178,216';
-
-    let W, H, nodes, edges;
-
-    function resize() {
-      const panel = canvas.parentElement;
-      W = canvas.width = panel.offsetWidth;
-      H = canvas.height = panel.offsetHeight;
-      init();
-    }
-
-    function init() {
-      const N = 28;
-      nodes = Array.from({length: N}, (_, i) => ({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 2.5 + 1.2,
-        pulse: Math.random() * Math.PI * 2,
-        speed: Math.random() * 0.012 + 0.006,
-        kind: i < 6 ? 'hub' : 'node'
-      }));
-      // hubs are bigger
-      nodes.filter(n => n.kind === 'hub').forEach(n => { n.r = Math.random() * 2 + 3.5; });
-      buildEdges();
-    }
-
-    function buildEdges() {
-      edges = [];
-      const DIST = Math.min(W, H) * 0.38;
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
-          if (Math.sqrt(dx*dx + dy*dy) < DIST) edges.push([i, j]);
-        }
-      }
-    }
-
-    function draw(t) {
-      ctx.clearRect(0, 0, W, H);
-
-      // edges
-      edges.forEach(([i, j]) => {
-        const a = nodes[i], b = nodes[j];
-        const dx = a.x - b.x, dy = a.y - b.y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        const DIST = Math.min(W, H) * 0.38;
-        if (dist > DIST) return;
-        const alpha = (1 - dist / DIST) * 0.18;
-        ctx.beginPath();
-        ctx.strokeStyle = `rgba(${slateLight},${alpha})`;
-        ctx.lineWidth = 0.7;
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.stroke();
-      });
-
-      // nodes
-      nodes.forEach(n => {
-        const pulse = 0.5 + 0.5 * Math.sin(n.pulse + t * n.speed * 60);
-        const glowAlpha = 0.08 + 0.07 * pulse;
-        const col = n.kind === 'hub' ? teal : slateLight;
-
-        // glow
-        const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 5);
-        g.addColorStop(0, `rgba(${col},${glowAlpha})`);
-        g.addColorStop(1, `rgba(${col},0)`);
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r * 5, 0, Math.PI * 2);
-        ctx.fillStyle = g;
-        ctx.fill();
-
-        // core
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${col},${0.5 + 0.3 * pulse})`;
-        ctx.fill();
-      });
-    }
-
-    let last = 0;
-    function tick(ts) {
-      const t = ts / 1000;
-      const DIST = Math.min(W, H) * 0.38;
-
-      nodes.forEach(n => {
-        n.x += n.vx;
-        n.y += n.vy;
-        if (n.x < 0 || n.x > W) n.vx *= -1;
-        if (n.y < 0 || n.y > H) n.vy *= -1;
-        n.pulse += n.speed;
-      });
-
-      if (ts - last > 800) { buildEdges(); last = ts; }
-      draw(t);
-      requestAnimationFrame(tick);
-    }
-
-    window.addEventListener('resize', resize);
-    resize();
-    requestAnimationFrame(tick);
-  })();
-
-  // ── SCROLL SPY ──
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('nav a');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(l => {
-          l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id);
-        });
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-
-  sections.forEach(s => observer.observe(s));
-
-  // ── FADE IN ──
-  const fadeEls = document.querySelectorAll('.fade-in');
-  const fadeObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); }
-    });
-  }, { threshold: 0.08 });
-  fadeEls.forEach(el => fadeObs.observe(el));
-
-  // ── TWEAKS ──
-  const tweaks = document.getElementById('tweaks-panel');
-
-  window.addEventListener('message', e => {
-    if (e.data.type === '__activate_edit_mode') tweaks.style.display = 'block';
-    if (e.data.type === '__deactivate_edit_mode') tweaks.style.display = 'none';
+  }
+  function tok(e){return (e.getAttribute('data-g')||'').split(' ');}
+  function on(card){
+    var T=tok(card);dg.classList.add('hl');
+    function hit(e){return tok(e).some(function(x){return T.indexOf(x)>=0;});}
+    cards.forEach(function(c){c.classList.toggle('on',hit(c));});
+    $$('.ln,.dt',svg).forEach(function(l){l.classList.toggle('on',hit(l));});
+    it.textContent=card.getAttribute('data-d');
+    var ic=card.querySelector('.ic');ii.innerHTML=ic?ic.outerHTML:'';
+  }
+  function off(){dg.classList.remove('hl');cards.forEach(function(c){c.classList.remove('on');});$$('.ln,.dt',svg).forEach(function(l){l.classList.remove('on');});it.textContent=def;ii.innerHTML='';}
+  cards.forEach(function(c){
+    c.addEventListener('mouseenter',function(){on(c);});c.addEventListener('focus',function(){on(c);});
+    c.addEventListener('mouseleave',off);c.addEventListener('blur',off);
   });
+  var rz=0;function redraw(){cancelAnimationFrame(rz);rz=requestAnimationFrame(draw);}
+  if(window.ResizeObserver)new ResizeObserver(redraw).observe(dg);else addEventListener('resize',redraw);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(redraw);
+  addEventListener('load',redraw);draw();
+}
+setupDG('dg1',[
+  ['smiles','core','smiles',{di:[0,4]}],['graph','core','graph',{di:[1,4]}],['conf','core','conf',{di:[2,4]}],['know','core','know',{di:[3,4]}],
+  ['core','pred','smiles graph conf know',{si:[0,2]}],['core','ff','smiles graph conf know prior',{si:[1,2]}],
+  ['prior','core','prior'],['prior','ff','prior']
+]);
+setupDG('dg2',[
+  ['kg','agent','t1'],['simt','agent','t2'],['mod','agent','t3'],['opt','agent','t4'],
+  ['agent','lit','s1'],['agent','dat','s2'],['agent','msim','s3'],['agent','popt','s4'],
+  ['lit','dat','s1 s2'],['dat','msim','s2 s3'],['msim','popt','s3 s4'],['popt','ic','s4 tag']
+]);
 
-  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+/* 导航：标出当前所在章节 */
+var secs=$$('main section[id]'),links=$$('.links a[href^="#"]');
+var spy=new IntersectionObserver(function(es){
+  es.forEach(function(e){if(!e.isIntersecting)return;links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id);});});
+},{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(function(s){spy.observe(s);});
 
-  document.getElementById('tw-accent').addEventListener('input', function() {
-    document.documentElement.style.setProperty('--teal', this.value);
-    document.documentElement.style.setProperty('--teal-dim', this.value + '1a');
-    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accentColor: this.value } }, '*');
-  });
-
-  document.getElementById('tw-bg').addEventListener('change', function() {
-    document.documentElement.style.setProperty('--navy', this.value);
-    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { bgColor: this.value } }, '*');
-  });
-
-  const sizeInput = document.getElementById('tw-size');
-  const sizeVal = document.getElementById('tw-size-val');
-  sizeInput.addEventListener('input', function() {
-    document.body.style.fontSize = this.value + 'px';
-    sizeVal.textContent = this.value + 'px';
-    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { fontSize: parseInt(this.value) } }, '*');
-  });
+/* 首屏：晶格 + 沿键传递的信号（克制版） */
+var hero=document.getElementById('top'),cv=document.getElementById('field'),fx=cv.getContext('2d');
+var INK='241,236,224',ACC='217,180,106';
+var HW=0,HH=0,at=[],ed=[],pulses=[],cx=0,cy=0,la=40,vis=true,P={x:0,y:0,t:-99,m:false};
+addEventListener('pointermove',function(e){P.x=e.clientX;P.y=e.clientY;P.t=performance.now()/1000;P.m=true;},{passive:true});
+function build(){
+  var d=Math.min(devicePixelRatio||1,2);HW=hero.clientWidth;HH=hero.clientHeight;
+  cv.width=Math.round(HW*d);cv.height=Math.round(HH*d);fx.setTransform(d,0,0,d,0,0);
+  var small=HW<760,nx=small?7:11,ny=small?8:7,nz=small?3:4;
+  la=small?Math.min(HW*0.1,HH*0.06):Math.min(HW*0.06,HH*0.1);
+  cx=small?HW*0.5:HW*0.74;cy=small?HH*0.7:HH*0.5;
+  at=[];ed=[];var idx={},i,j,k;
+  for(i=0;i<nx;i++)for(j=0;j<ny;j++)for(k=0;k<nz;k++){idx[i+','+j+','+k]=at.length;at.push({x:(i-(nx-1)/2)*la,y:(j-(ny-1)/2)*la,z:(k-(nz-1)/2)*la,ox:0,oy:0,vx:0,vy:0,g:0,nb:[],sx:0,sy:0,sc:1,n:0});}
+  for(i=0;i<nx;i++)for(j=0;j<ny;j++)for(k=0;k<nz;k++){
+    var a=idx[i+','+j+','+k];
+    [[1,0,0],[0,1,0],[0,0,1]].forEach(function(dd){var b=idx[(i+dd[0])+','+(j+dd[1])+','+(k+dd[2])];if(b!==undefined){ed.push([a,b]);at[a].nb.push(b);at[b].nb.push(a);}});
+  }
+  pulses=[];for(i=0;i<(small?4:7);i++){var s=Math.floor(Math.random()*at.length);pulses.push({a:s,b:at[s].nb[0],u:Math.random()});}
+}
+var last=0;
+function frame(ts){
+  requestAnimationFrame(frame);
+  if(!vis||!at.length)return;
+  var t=ts/1000,dt=Math.min(t-(last||t),0.03);last=t;
+  var rect=cv.getBoundingClientRect(),act=P.m&&(t-P.t)<2.5,px,py,str;
+  if(act){px=P.x-rect.left;py=P.y-rect.top;str=1;}else{px=cx+Math.sin(t*0.35)*HW*0.12;py=cy+Math.cos(t*0.27)*HH*0.14;str=reduce?0:0.3;}
+  var rot=reduce?0.5:t*0.05,tilt=-0.42,cA=Math.cos(rot),sA=Math.sin(rot),cT=Math.cos(tilt),sT=Math.sin(tilt),f0=HW*1.2,RR=clamp(HW*0.11,110,180),i,A,B;
+  for(i=0;i<at.length;i++){
+    A=at[i];var x1=A.x*cA+A.z*sA,z1=-A.x*sA+A.z*cA,y1=A.y*cT-z1*sT,z2=A.y*sT+z1*cT;
+    A.sc=f0/(f0+z2);A.sx=cx+x1*A.sc;A.sy=cy+y1*A.sc;A.n=clamp(0.5-z2/(la*9),0.1,1);
+    var dx=A.sx-px,dy=A.sy-py,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<RR&&d>0.5&&str>0){var f=Math.pow(1-d/RR,2);A.vx+=dx/d*f*1400*str*dt;A.vy+=dy/d*f*1400*str*dt;if(f>0.3)A.g=Math.max(A.g,f*str);}
+    A.vx+=(-A.ox*55-A.vx*5.5)*dt;A.vy+=(-A.oy*55-A.vy*5.5)*dt;A.ox+=A.vx*dt;A.oy+=A.vy*dt;A.g=Math.max(0,A.g-dt*1.6);
+  }
+  fx.clearRect(0,0,HW,HH);fx.lineWidth=1;
+  for(var b=0;b<2;b++){
+    fx.strokeStyle='rgba('+INK+','+(0.06+b*0.1).toFixed(3)+')';fx.beginPath();
+    for(i=0;i<ed.length;i++){A=at[ed[i][0]];B=at[ed[i][1]];if(((A.n+B.n)/2<0.55?0:1)!==b)continue;fx.moveTo(A.sx+A.ox,A.sy+A.oy);fx.lineTo(B.sx+B.ox,B.sy+B.oy);}
+    fx.stroke();
+  }
+  if(!reduce)for(i=0;i<pulses.length;i++){
+    var p=pulses[i];p.u+=dt*1.4;
+    if(p.u>=1){p.u=0;var prev=p.a;p.a=p.b;at[p.a].g=Math.max(at[p.a].g,0.8);var nb=at[p.a].nb;p.b=nb[Math.floor(Math.random()*nb.length)];if(p.b===prev&&nb.length>1)p.b=nb[(nb.indexOf(prev)+1)%nb.length];}
+    A=at[p.a];B=at[p.b];var ax=A.sx+A.ox,ay=A.sy+A.oy,qx=ax+(B.sx+B.ox-ax)*p.u,qy=ay+(B.sy+B.oy-ay)*p.u;
+    fx.strokeStyle='rgba('+ACC+',0.85)';fx.lineWidth=1.5;fx.beginPath();fx.moveTo(ax,ay);fx.lineTo(qx,qy);fx.stroke();
+  }
+  for(i=0;i<at.length;i++){
+    A=at[i];fx.fillStyle='rgba('+INK+','+(0.22+0.6*A.n).toFixed(3)+')';fx.beginPath();fx.arc(A.sx+A.ox,A.sy+A.oy,(1+1.2*A.n)*A.sc,0,6.2832);fx.fill();
+    if(A.g>0.03){fx.fillStyle='rgba('+ACC+','+(A.g*0.9).toFixed(3)+')';fx.beginPath();fx.arc(A.sx+A.ox,A.sy+A.oy,2.2+A.g*4.5,0,6.2832);fx.fill();}
+  }
+}
+new IntersectionObserver(function(es){vis=es[0].isIntersecting;}).observe(hero);
+var rz2=0;addEventListener('resize',function(){cancelAnimationFrame(rz2);rz2=requestAnimationFrame(build);});
+build();requestAnimationFrame(frame);
+})();
 </script>
-
 </body>
 </html>
